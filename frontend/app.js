@@ -34,6 +34,7 @@ let map;
 let startMarker = null;
 let endMarker = null;
 let routePolylines = [];
+let windMarkers = [];
 let currentRoutes = [];
 let selectedRouteId = null;
 
@@ -277,14 +278,90 @@ function renderUI(data) {
     routesList.appendChild(card);
   });
 
-  // 4. Draw Polylines
-  drawRoutesOnMap(data.routes, data.recommended_id);
+  // 4. Stage 5: Render Departure Forecast
+  renderDepartureForecast(data.departure_forecast);
+
+  // 5. Stage 5: Render Source Likelihood
+  renderSourceLikelihood(data.source_likelihood);
+
+  // 6. Draw Polylines & Wind Drift Vectors
+  drawRoutesOnMap(data.routes, data.recommended_id, data.weather);
 }
 
 /**
- * Draws polylines with clean AWS-like contrast on OpenStreetMap.
+ * Stage 5: Renders the 12-hour departure forecast & optimal departure window.
  */
-function drawRoutesOnMap(routes, recommendedId) {
+function renderDepartureForecast(forecast) {
+  const forecastCard = document.getElementById("forecastCard");
+  const heading = document.getElementById("departureTimeHeading");
+  const recText = document.getElementById("departureRecText");
+  const timeline = document.getElementById("forecastTimeline");
+
+  if (!forecast || forecast.status !== "available") {
+    forecastCard.style.display = "none";
+    return;
+  }
+
+  forecastCard.style.display = "block";
+  heading.textContent = `Optimal Departure: ${forecast.recommended_departure_time}`;
+  recText.textContent = forecast.recommendation_text;
+
+  timeline.innerHTML = "";
+  (forecast.hourly_timeline || []).slice(0, 8).forEach(item => {
+    const isOptimal = item.time === forecast.recommended_departure_time;
+    const cat = getAQICategory(item.pm25);
+
+    const step = document.createElement("div");
+    step.className = `forecast-step ${isOptimal ? 'optimal' : ''}`;
+    step.innerHTML = `
+      <span class="forecast-time">${item.time}</span>
+      <span class="forecast-pm25">${item.pm25}</span>
+      <span class="forecast-badge" style="background-color: ${cat.color};">${cat.name}</span>
+    `;
+    timeline.appendChild(step);
+  });
+}
+
+/**
+ * Stage 5: Renders particulate source likelihood contribution bars.
+ */
+function renderSourceLikelihood(sources) {
+  const sourceCard = document.getElementById("sourceCard");
+  const primaryName = document.getElementById("sourcePrimaryName");
+  const explanation = document.getElementById("sourceExplanation");
+  const container = document.getElementById("sourceBarsContainer");
+
+  if (!sources || !sources.breakdown) {
+    sourceCard.style.display = "none";
+    return;
+  }
+
+  sourceCard.style.display = "block";
+  primaryName.textContent = sources.primary_source;
+  explanation.textContent = sources.explanation;
+
+  container.innerHTML = "";
+  sources.breakdown.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "source-bar-row";
+    row.innerHTML = `
+      <div class="source-bar-header">
+        <span>${item.source}</span>
+        <strong>${item.percentage}%</strong>
+      </div>
+      <div class="source-bar-track">
+        <div class="source-bar-fill" style="width: ${item.percentage}%; background-color: ${item.color};"></div>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+/**
+/**
+ * Draws polylines and wind drift flow indicators on OpenStreetMap.
+ */
+function drawRoutesOnMap(routes, recommendedId, weather) {
   clearRoutePolylines();
   const allBounds = [];
 
@@ -296,7 +373,6 @@ function drawRoutesOnMap(routes, recommendedId) {
     const latLngs = route.geometry;
     latLngs.forEach(pt => allBounds.push(pt));
 
-    // Clean, crisp polyline styling
     const polyline = L.polyline(latLngs, {
       color: isSelected ? (isRecommended ? "#1d8102" : aqiCat.color) : "#545b64",
       weight: isSelected ? 6 : 4,
@@ -313,6 +389,28 @@ function drawRoutesOnMap(routes, recommendedId) {
 
     routePolylines.push({ id: route.id, polyline, categoryColor: aqiCat.color });
   });
+
+  // Stage 5: Draw Wind Drift Vector Arrows on Map
+  if (weather && weather.wind_dir != null && routes.length > 0) {
+    const recRoute = routes.find(r => r.id === recommendedId) || routes[0];
+    const geom = recRoute.geometry || [];
+    if (geom.length > 4) {
+      // Sample 2 intermediate points along route to display wind vectors
+      const idxs = [Math.floor(geom.length * 0.35), Math.floor(geom.length * 0.7)];
+      idxs.forEach(idx => {
+        const pt = geom[idx];
+        const windIcon = L.divIcon({
+          className: "custom-wind-icon",
+          html: `<div class="wind-drift-marker" style="transform: rotate(${weather.wind_dir}deg);" title="Wind Drift: ${weather.wind_speed} km/h">➤</div>`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14]
+        });
+        const wMarker = L.marker([pt[0], pt[1]], { icon: windIcon }).addTo(map);
+        wMarker.bindTooltip(`<b>Wind Drift:</b> ${weather.wind_speed} km/h from ${weather.wind_dir}°<br><small>Carries airborne particulates</small>`);
+        windMarkers.push(wMarker);
+      });
+    }
+  }
 
   if (allBounds.length > 0) {
     map.fitBounds(allBounds, { padding: [40, 40] });
@@ -347,6 +445,8 @@ function selectRoute(routeId) {
 function clearRoutePolylines() {
   routePolylines.forEach(item => map.removeLayer(item.polyline));
   routePolylines = [];
+  windMarkers.forEach(m => map.removeLayer(m));
+  windMarkers = [];
 }
 
 /**

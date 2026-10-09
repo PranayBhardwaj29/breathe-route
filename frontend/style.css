@@ -731,3 +731,177 @@ body {
     height: 50vh;
   }
 }
+
+/* ==========================================================================
+   Stage 5: Departure Optimizer, Source Likelihood & Wind Drift Styles
+   ========================================================================== */
+
+/* Departure Optimizer Box */
+.departure-highlight-box {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  border-radius: var(--radius-xs);
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.departure-icon {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.departure-content h4 {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #15803d;
+  margin-bottom: 2px;
+}
+
+.departure-content p {
+  font-size: 0.74rem;
+  color: var(--aws-text-secondary);
+  line-height: 1.35;
+}
+
+/* Forecast Horizontal Timeline */
+.forecast-timeline-wrap {
+  margin-bottom: 8px;
+}
+
+.forecast-timeline {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.forecast-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1px solid var(--aws-border-medium);
+  border-radius: var(--radius-xs);
+  padding: 5px 8px;
+  min-width: 58px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.forecast-step.optimal {
+  background-color: #ecfdf5;
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px #10b981;
+}
+
+.forecast-time {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--aws-text-primary);
+}
+
+.forecast-pm25 {
+  font-size: 0.76rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  margin: 2px 0;
+}
+
+.forecast-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.forecast-disclaimer {
+  font-size: 0.66rem;
+  color: var(--aws-text-muted);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* Source Likelihood Progress Bars */
+.source-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.76rem;
+}
+
+.source-label {
+  color: var(--aws-text-secondary);
+}
+
+.source-primary-name {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.source-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.source-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.source-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--aws-text-secondary);
+}
+
+.source-bar-track {
+  height: 6px;
+  background-color: #eaeded;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.source-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.source-explanation {
+  font-size: 0.72rem;
+  color: var(--aws-text-secondary);
+  line-height: 1.35;
+  background-color: #fafafa;
+  border-left: 3px solid var(--aws-blue);
+  padding: 6px 10px;
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  margin-bottom: 6px;
+}
+
+/* Wind Drift Indicator Marker on Leaflet */
+.wind-drift-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(35, 47, 62, 0.85);
+  border: 1px solid #ff9900;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  color: #ff9900;
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+

@@ -120,6 +120,52 @@
         </div>
       </section>
 
+      <!-- Stage 5: Best Time to Leave Forecast Card -->
+      <section class="aws-card forecast-card" id="forecastCard" style="display: none;">
+        <div class="card-title-bar">
+          <h3>Best Time to Leave (Forecast)</h3>
+          <span class="badge-subtle">Estimate</span>
+        </div>
+        
+        <div class="departure-highlight-box" id="departureHighlightBox">
+          <span class="departure-icon">⏱</span>
+          <div class="departure-content">
+            <h4 id="departureTimeHeading">Optimal Departure: 08:00</h4>
+            <p id="departureRecText">Postponing departure can reduce pollution exposure by up to 37%.</p>
+          </div>
+        </div>
+
+        <div class="forecast-timeline-wrap">
+          <label class="form-label">Upcoming 8-Hour PM2.5 Forecast:</label>
+          <div class="forecast-timeline" id="forecastTimeline">
+            <!-- Dynamic forecast hours will render here -->
+          </div>
+        </div>
+        <p class="forecast-disclaimer">* Derived from Copernicus CAMS atmospheric model.</p>
+      </section>
+
+      <!-- Stage 5: Pollutant Source Likelihood Card -->
+      <section class="aws-card source-card" id="sourceCard" style="display: none;">
+        <div class="card-title-bar">
+          <h3>Particulate Source Likelihood</h3>
+          <span class="badge-subtle">Empirical Model</span>
+        </div>
+
+        <div class="source-summary-row">
+          <span class="source-label">Primary Contributor:</span>
+          <strong class="source-primary-name" id="sourcePrimaryName">Vehicular Exhaust</strong>
+        </div>
+
+        <div class="source-bars-container" id="sourceBarsContainer">
+          <!-- Dynamic progress bars -->
+        </div>
+
+        <p class="source-explanation" id="sourceExplanation">
+          Peak traffic rush hour with low wind dispersion traps vehicular emissions near road level.
+        </p>
+        <p class="forecast-disclaimer">* Empirical estimate based on CPCB diurnal profiles and wind vector.</p>
+      </section>
+
       <!-- National AQI Scale Reference -->
       <section class="aws-card legend-card">
         <div class="card-title-bar">

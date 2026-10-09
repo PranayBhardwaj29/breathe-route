@@ -4,8 +4,8 @@
       "id": "r1",
       "distance_m": 3602,
       "duration_s": 278,
-      "avg_aqi": 89.6,
-      "exposure_score": 89.6,
+      "avg_aqi": 90.8,
+      "exposure_score": 90.8,
       "geometry": [
         [
           28.632502,
@@ -637,8 +637,8 @@
       "id": "r2",
       "distance_m": 3654,
       "duration_s": 289,
-      "avg_aqi": 89.6,
-      "exposure_score": 89.6,
+      "avg_aqi": 90.8,
+      "exposure_score": 90.8,
       "geometry": [
         [
           28.632502,
@@ -1302,8 +1302,8 @@
       "id": "r3",
       "distance_m": 4008,
       "duration_s": 411,
-      "avg_aqi": 88.9,
-      "exposure_score": 88.9,
+      "avg_aqi": 90.1,
+      "exposure_score": 90.1,
       "geometry": [
         [
           28.632502,
@@ -1971,10 +1971,98 @@
   "recommended_id": "r3",
   "trade_off": "+2 min, 1% less exposure",
   "weather": {
-    "wind_speed": 7.1,
-    "wind_dir": 105
+    "wind_speed": 7.7,
+    "wind_dir": 106
   },
-  "aqi_updated_at": "2026-10-09T15:14:55.830884+00:00",
+  "aqi_updated_at": "2026-10-09T16:24:22.817668+00:00",
   "data_status": "live",
+  "departure_forecast": {
+    "status": "available",
+    "recommended_departure_time": "08:00",
+    "recommended_pm25": 56.8,
+    "current_baseline_pm25": 90.1,
+    "pct_reduction": 37,
+    "is_now_best": false,
+    "recommendation_text": "Postponing departure to 08:00 can reduce pollution exposure by up to 37%.",
+    "hourly_timeline": [
+      {
+        "time": "21:00",
+        "pm25": 61.0
+      },
+      {
+        "time": "22:00",
+        "pm25": 62.4
+      },
+      {
+        "time": "23:00",
+        "pm25": 64.7
+      },
+      {
+        "time": "00:00",
+        "pm25": 66.8
+      },
+      {
+        "time": "01:00",
+        "pm25": 68.7
+      },
+      {
+        "time": "02:00",
+        "pm25": 69.2
+      },
+      {
+        "time": "03:00",
+        "pm25": 68.9
+      },
+      {
+        "time": "04:00",
+        "pm25": 67.3
+      },
+      {
+        "time": "05:00",
+        "pm25": 65.9
+      },
+      {
+        "time": "06:00",
+        "pm25": 62.4
+      },
+      {
+        "time": "07:00",
+        "pm25": 61.2
+      },
+      {
+        "time": "08:00",
+        "pm25": 56.8
+      }
+    ],
+    "disclaimer": "Forecast estimate derived from Copernicus CAMS model. Actual atmospheric conditions may fluctuate."
+  },
+  "source_likelihood": {
+    "primary_source": "Vehicular Exhaust & Idling",
+    "confidence": "Medium",
+    "breakdown": [
+      {
+        "source": "Vehicular Exhaust & Idling",
+        "percentage": 42,
+        "color": "#dc2626"
+      },
+      {
+        "source": "Road Dust & Re-suspension",
+        "percentage": 21,
+        "color": "#d97706"
+      },
+      {
+        "source": "Regional Drift & Biomass Smoke",
+        "percentage": 21,
+        "color": "#7c3aed"
+      },
+      {
+        "source": "Local Domestic/Waste Burning",
+        "percentage": 16,
+        "color": "#4b5563"
+      }
+    ],
+    "explanation": "Peak vehicular commute with heavy idling and tailpipe exhaust. Easterly/variable surface winds limiting trans-boundary agricultural transport. Moderate ventilation facilitating gradual pollutant dispersion.",
+    "disclaimer": "Empirical estimate based on Delhi CPCB diurnal source apportionment profiles."
+  },
   "limitations": "Exposure score is an inverse-distance weighted (IDW) estimate from live monitoring stations sampled every ~200m. It is not an in-situ physical sensor measurement. Sparse station coverage and hyper-local vehicle exhaust at intersections are not fully captured."
 }

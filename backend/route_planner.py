@@ -1,14 +1,17 @@
 """
 Route Planner Coordinator for Breathe Route.
-Combines routing, live AQI stations, weather data, and IDW exposure scoring.
+Combines routing, live AQI stations, weather data, IDW exposure scoring,
+best time to leave forecast analysis, and source likelihood estimation.
 Produces the finalized JSON response strictly matching the API contract.
 """
 
+from datetime import datetime
 from typing import Dict, Any, List
 from services.weather_service import fetch_weather
 from services.aqi_service import get_delhi_aqi
 from services.router_service import get_cycling_routes
 from services.exposure import compute_route_exposure
+from services.forecast_service import analyze_best_departure_time, estimate_source_likelihood
 
 LIMITATIONS_NOTICE = (
     "Exposure score is an inverse-distance weighted (IDW) estimate from live monitoring stations "
@@ -77,6 +80,21 @@ def plan_routes(start: Dict[str, float], end: Dict[str, float], mode: str = "cyc
             pct_saved = 0
             
         trade_off = f"+{extra_min} min, {pct_saved}% less exposure"
+
+    # 7. Stage 5: Best Time to Leave Forecast & Source Likelihood Analysis
+    departure_forecast = analyze_best_departure_time(
+        lat=mid_lat,
+        lng=mid_lng,
+        current_pm25=cleanest_route["exposure_score"]
+    )
+
+    current_hour_ist = datetime.now().hour
+    source_likelihood = estimate_source_likelihood(
+        hour_ist=current_hour_ist,
+        wind_speed_kmh=weather_info.get("wind_speed_kmh", 7.0),
+        wind_dir_deg=weather_info.get("wind_dir_deg", 90.0),
+        pm25_val=cleanest_route["exposure_score"]
+    )
         
     # Build clean response adhering strictly to the contract
     clean_routes_output = [
@@ -101,5 +119,7 @@ def plan_routes(start: Dict[str, float], end: Dict[str, float], mode: str = "cyc
         },
         "aqi_updated_at": aqi_updated_at,
         "data_status": data_status,
+        "departure_forecast": departure_forecast,
+        "source_likelihood": source_likelihood,
         "limitations": LIMITATIONS_NOTICE
     }
