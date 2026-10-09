@@ -134,7 +134,7 @@ def fetch_osrm_routes_with_alternatives(start: Dict[str, float], end: Dict[str, 
 
 def get_cycling_routes(start: Dict[str, float], end: Dict[str, float]) -> List[Dict[str, Any]]:
     """Main routing function."""
-    ors_key = os.getenv("ORS_API_KEY", "").strip()
+    ors_key = os.getenv("ORS_API_KEY", "").strip() or os.getenv("HEIGIT_API_KEY", "").strip()
     if ors_key:
         routes = fetch_ors_routes(start, end, ors_key)
         if len(routes) >= 2:

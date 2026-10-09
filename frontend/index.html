@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathe Route | AWS Delhi Air Quality Cycling Optimizer</title>
+  <meta name="description" content="Clean air cycling navigation for Delhi built on AWS Lambda & SAM. Minimizes PM2.5 pollution exposure with live air quality and weather telemetry.">
+
+  <!-- Open Sans / Amazon Ember System Font Stack -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- AWS Top Navigation Bar -->
+  <header class="aws-navbar">
+    <div class="nav-left">
+      <div class="aws-logo-box">
+        <span class="aws-logo-text">aws</span>
+      </div>
+      <div class="brand-divider"></div>
+      <div class="service-title">
+        <span class="service-name">Breathe Route</span>
+        <span class="service-tag">Air Quality Navigation</span>
+      </div>
+      <span class="region-pill">Region: ap-south-1 (Delhi NCR)</span>
+    </div>
+
+    <div class="nav-right">
+      <div class="status-indicator">
+        <span class="status-dot online"></span>
+        <span id="dataStatusLabel">Live Data (Copernicus / OpenAQ)</span>
+      </div>
+      <div class="telemetry-badge" id="weatherPill" title="Live Delhi Weather">
+        <span class="wind-arrow" id="windArrow">➤</span>
+        <span id="weatherText">Wind 7 km/h</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Console Layout -->
+  <div class="console-body">
+    <!-- Left Configuration & Results Panel -->
+    <aside class="console-sidebar">
+      
+      <!-- Route Configuration Card -->
+      <section class="aws-card config-card">
+        <div class="card-title-bar">
+          <h2>Route Configuration</h2>
+          <span class="badge-subtle">Mode: Cycling</span>
+        </div>
+
+        <!-- Delhi Hotspot Presets -->
+        <div class="form-group">
+          <label class="form-label">Delhi Landmark Quick Presets</label>
+          <div class="preset-button-group">
+            <button class="btn-preset active" data-preset="cp-ig">CP ➔ India Gate</button>
+            <button class="btn-preset" data-preset="hk-saket">Hauz Khas ➔ Saket</button>
+            <button class="btn-preset" data-preset="du-rf">DU ➔ Red Fort</button>
+            <button class="btn-preset" data-preset="dwarka-airport">Dwarka ➔ Airport</button>
+          </div>
+        </div>
+
+        <!-- Coordinates / Address Input -->
+        <div class="waypoints-container">
+          <div class="waypoint-row">
+            <span class="waypoint-icon start-icon">A</span>
+            <div class="input-container">
+              <label>Origin</label>
+              <input type="text" id="startInput" value="Connaught Place (28.6328, 77.2197)" readonly>
+            </div>
+          </div>
+
+          <div class="waypoint-swap-row">
+            <button class="btn-swap" id="swapPointsBtn" title="Swap Origin and Destination">⇅ Swap</button>
+          </div>
+
+          <div class="waypoint-row">
+            <span class="waypoint-icon end-icon">B</span>
+            <div class="input-container">
+              <label>Destination</label>
+              <input type="text" id="endInput" value="India Gate (28.6129, 77.2295)" readonly>
+            </div>
+          </div>
+        </div>
+
+        <p class="map-hint">Tip: Click anywhere on the map to set Origin (1st click) and Destination (2nd click).</p>
+
+        <button class="btn-primary" id="findCleanestBtn">
+          <span>Calculate Cleanest Routes</span>
+        </button>
+      </section>
+
+      <!-- AWS Style Recommendation Alert -->
+      <section class="aws-alert alert-success" id="tradeoffBanner" style="display: none;">
+        <div class="alert-icon">✓</div>
+        <div class="alert-content">
+          <h4 id="tradeoffTitle">+2 min, 18% less exposure</h4>
+          <p id="tradeoffDesc">Recommended route minimizes cumulative PM2.5 exposure along cleaner side avenues.</p>
+        </div>
+      </section>
+
+      <!-- Route Alternatives Comparison -->
+      <section class="aws-card results-card" id="routesResultsSection">
+        <div class="card-title-bar">
+          <h3>Route Alternatives</h3>
+          <span class="badge-subtle" id="routesCountBadge">3 Routes</span>
+        </div>
+
+        <div class="routes-container" id="routesList">
+          <div class="loading-state">
+            <div class="aws-spinner"></div>
+            <span>Evaluating route geometry against live Delhi monitoring stations...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- National AQI Scale Reference -->
+      <section class="aws-card legend-card">
+        <div class="card-title-bar">
+          <h3>Indian National AQI Scale (PM2.5)</h3>
+        </div>
+        <div class="aqi-grid">
+          <div class="aqi-cell aqi-good">
+            <span class="aqi-name">Good</span>
+            <span class="aqi-range">0-50</span>
+          </div>
+          <div class="aqi-cell aqi-satisfactory">
+            <span class="aqi-name">Satisfactory</span>
+            <span class="aqi-range">51-100</span>
+          </div>
+          <div class="aqi-cell aqi-moderate">
+            <span class="aqi-name">Moderate</span>
+            <span class="aqi-range">101-200</span>
+          </div>
+          <div class="aqi-cell aqi-poor">
+            <span class="aqi-name">Poor</span>
+            <span class="aqi-range">201-300</span>
+          </div>
+          <div class="aqi-cell aqi-very-poor">
+            <span class="aqi-name">Very Poor</span>
+            <span class="aqi-range">301-400</span>
+          </div>
+          <div class="aqi-cell aqi-severe">
+            <span class="aqi-name">Severe</span>
+            <span class="aqi-range">401+</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Disclosures & Model Limitations -->
+      <div class="info-note">
+        <strong>Estimation Model:</strong>
+        <span id="limitationsText">Inverse-distance weighted (IDW) average sampled every ~200m along the route from live monitoring points. Real street-level microclimates may vary near busy intersections.</span>
+      </div>
+
+    </aside>
+
+    <!-- Right Map View -->
+    <main class="console-main">
+      <div class="map-container">
+        <div id="map"></div>
+
+        <!-- Floating Telemetry Metadata Box -->
+        <div class="map-floating-box top-right">
+          <table class="metadata-table">
+            <tr>
+              <td>Target Region:</td>
+              <th>Delhi NCR</th>
+            </tr>
+            <tr>
+              <td>Primary Metric:</td>
+              <th>PM2.5 Concentration</th>
+            </tr>
+            <tr>
+              <td>Telemetry Sync:</td>
+              <th id="lastUpdatedVal">Live</th>
+            </tr>
+          </table>
+        </div>
+
+        <div class="map-floating-box bottom-left">
+          <button class="btn-map-control" id="resetViewBtn">Reset Delhi Center</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- AWS Style Minimalist Footer -->
+  <footer class="aws-footer">
+    <div class="footer-col">
+      <span>Built for <strong>Environmental Hacks by AWS x WeMakeDevs</strong> (Air Track)</span>
+    </div>
+    <div class="footer-col right">
+      <span>Powered by AWS SAM, Lambda, OpenStreetMap, Open-Meteo & OpenAQ</span>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <script src="app.js"></script>
+</body>
+</html>

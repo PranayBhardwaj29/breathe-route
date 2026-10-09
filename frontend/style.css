@@ -1,0 +1,733 @@
+/* ==========================================================================
+   Breathe Route - Clean Minimalist AWS / Amazon Console Theme
+   Built for Hackathon: Environmental Hacks by AWS x WeMakeDevs
+   ========================================================================== */
+
+:root {
+  /* AWS Console Official Palette */
+  --aws-navy-dark: #161e2e;
+  --aws-navy-topbar: #232f3e;
+  --aws-navy-subbar: #19232f;
+  --aws-orange: #ec7211;
+  --aws-orange-hover: #eb5f07;
+  --aws-blue: #0073bb;
+  --aws-blue-hover: #005a92;
+  
+  --aws-bg-body: #f2f3f3;
+  --aws-bg-card: #ffffff;
+  --aws-border-subtle: #eaeded;
+  --aws-border-medium: #d5dbdb;
+  --aws-border-active: #0073bb;
+  
+  --aws-text-primary: #16191f;
+  --aws-text-secondary: #545b64;
+  --aws-text-muted: #687078;
+  --aws-text-light: #ffffff;
+
+  /* NAQI Scale Colors (Indian CPCB Standards) */
+  --naqi-good: #1d8102;
+  --naqi-satisfactory: #65a30d;
+  --naqi-moderate: #d97706;
+  --naqi-poor: #ea580c;
+  --naqi-very-poor: #dc2626;
+  --naqi-severe: #991b1b;
+
+  --font-main: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Roboto Mono', Menlo, Consolas, monospace;
+
+  --nav-height: 52px;
+  --footer-height: 36px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --shadow-card: 0 1px 1px 0 rgba(0, 28, 36, 0.3), 1px 1px 1px 0 rgba(0, 28, 36, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--aws-bg-body);
+  color: var(--aws-text-primary);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* AWS Top Navbar */
+.aws-navbar {
+  height: var(--nav-height);
+  background-color: var(--aws-navy-topbar);
+  color: var(--aws-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--aws-navy-subbar);
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.aws-logo-box {
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.aws-logo-text {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.05em;
+  color: #ff9900; /* Signature AWS Logo Yellow */
+  font-family: sans-serif;
+  text-transform: lowercase;
+}
+
+.brand-divider {
+  width: 1px;
+  height: 22px;
+  background-color: #414750;
+}
+
+.service-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--aws-text-light);
+  line-height: 1.1;
+}
+
+.service-tag {
+  font-size: 0.68rem;
+  color: #aab7b8;
+}
+
+.region-pill {
+  font-size: 0.72rem;
+  background-color: #19232f;
+  color: #d5dbdb;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  border: 1px solid #354254;
+  margin-left: 8px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #d5dbdb;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background-color: #1d8102;
+}
+
+.telemetry-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #19232f;
+  border: 1px solid #354254;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  font-size: 0.74rem;
+  color: #d5dbdb;
+}
+
+.wind-arrow {
+  display: inline-block;
+  color: #ff9900;
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+/* Console Body Layout */
+.console-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left Sidebar Panel */
+.console-sidebar {
+  width: 460px;
+  max-width: 100%;
+  background-color: var(--aws-bg-body);
+  border-right: 1px solid var(--aws-border-medium);
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 500;
+}
+
+/* AWS Style Cards */
+.aws-card {
+  background-color: var(--aws-bg-card);
+  border: 1px solid var(--aws-border-medium);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.card-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--aws-border-subtle);
+}
+
+.card-title-bar h2,
+.card-title-bar h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--aws-text-primary);
+  text-transform: none;
+}
+
+.badge-subtle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background-color: #f2f3f3;
+  color: var(--aws-text-secondary);
+  border: 1px solid var(--aws-border-medium);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+/* Form Groups & Inputs */
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--aws-text-secondary);
+  margin-bottom: 6px;
+}
+
+.preset-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-preset {
+  background-color: #ffffff;
+  border: 1px solid var(--aws-border-medium);
+  color: var(--aws-text-primary);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font-main);
+}
+
+.btn-preset:hover {
+  background-color: #f2f3f3;
+  border-color: #aab7b8;
+}
+
+.btn-preset.active {
+  background-color: #ebf5fa;
+  border-color: var(--aws-blue);
+  color: var(--aws-blue);
+}
+
+/* Waypoints Container */
+.waypoints-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #fafafa;
+  border: 1px solid var(--aws-border-medium);
+  border-radius: var(--radius-xs);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.waypoint-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.waypoint-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-xs);
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.start-icon {
+  background-color: #1d8102;
+}
+
+.end-icon {
+  background-color: #dc2626;
+}
+
+.input-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  font-size: 0.66rem;
+  color: var(--aws-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.input-container input {
+  border: 1px solid var(--aws-border-medium);
+  background-color: #ffffff;
+  color: var(--aws-text-primary);
+  font-size: 0.78rem;
+  padding: 5px 8px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-main);
+  outline: none;
+}
+
+.input-container input:focus {
+  border-color: var(--aws-blue);
+  box-shadow: 0 0 0 1px var(--aws-blue);
+}
+
+.waypoint-swap-row {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 4px;
+}
+
+.btn-swap {
+  background: #ffffff;
+  border: 1px solid var(--aws-border-medium);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  color: var(--aws-text-secondary);
+}
+
+.btn-swap:hover {
+  background: #f2f3f3;
+  color: var(--aws-text-primary);
+}
+
+.map-hint {
+  font-size: 0.72rem;
+  color: var(--aws-text-muted);
+  margin-bottom: 12px;
+}
+
+/* AWS Primary Button */
+.btn-primary {
+  width: 100%;
+  background: var(--aws-orange);
+  color: #ffffff;
+  border: 1px solid #d45f09;
+  border-radius: var(--radius-xs);
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--aws-orange-hover);
+}
+
+/* AWS Cloudscape Alert Box */
+.aws-alert {
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.alert-success {
+  background-color: #f2fcf3;
+  border-left: 4px solid #1d8102;
+  border-top: 1px solid #d6f0d9;
+  border-right: 1px solid #d6f0d9;
+  border-bottom: 1px solid #d6f0d9;
+}
+
+.alert-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1d8102;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.alert-content h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1d8102;
+  margin-bottom: 2px;
+}
+
+.alert-content p {
+  font-size: 0.74rem;
+  color: var(--aws-text-secondary);
+  line-height: 1.35;
+}
+
+/* Route Alternatives Cards */
+.routes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.route-card {
+  background: #ffffff;
+  border: 1px solid var(--aws-border-medium);
+  border-radius: var(--radius-xs);
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+  position: relative;
+}
+
+.route-card:hover {
+  background-color: #fafafa;
+  border-color: #879596;
+}
+
+.route-card.selected {
+  border: 2px solid var(--aws-blue);
+  background-color: #f5f9fc;
+}
+
+.route-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.route-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-name {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--aws-text-primary);
+}
+
+.pill-cleanest {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+}
+
+.pill-naqi {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.route-metrics-table {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  border-top: 1px solid var(--aws-border-subtle);
+  padding-top: 8px;
+}
+
+.metric-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.65rem;
+  color: var(--aws-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--aws-text-primary);
+}
+
+.metric-value.exposure-highlight {
+  color: #1d8102;
+}
+
+/* Loading Spinner */
+.loading-state {
+  padding: 24px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: var(--aws-text-secondary);
+  text-align: center;
+}
+
+.aws-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #d5dbdb;
+  border-top-color: var(--aws-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* AQI Legend */
+.aqi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+}
+
+.aqi-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 2px;
+  border-radius: var(--radius-xs);
+  color: #ffffff;
+  text-align: center;
+}
+
+.aqi-good { background-color: var(--naqi-good); }
+.aqi-satisfactory { background-color: var(--naqi-satisfactory); }
+.aqi-moderate { background-color: var(--naqi-moderate); }
+.aqi-poor { background-color: var(--naqi-poor); }
+.aqi-very-poor { background-color: var(--naqi-very-poor); }
+.aqi-severe { background-color: var(--naqi-severe); }
+
+.aqi-name {
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.aqi-range {
+  font-size: 0.58rem;
+  font-family: var(--font-mono);
+}
+
+/* Info Note */
+.info-note {
+  font-size: 0.7rem;
+  color: var(--aws-text-muted);
+  line-height: 1.35;
+  padding: 0 4px;
+}
+
+/* Right Console Map Area */
+.console-main {
+  flex: 1;
+  position: relative;
+  background-color: #eaeded;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Map Floating Overlays */
+.map-floating-box {
+  position: absolute;
+  z-index: 1000;
+}
+
+.map-floating-box.top-right {
+  top: 14px;
+  right: 14px;
+}
+
+.map-floating-box.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.metadata-table {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--aws-border-medium);
+  border-radius: var(--radius-xs);
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  box-shadow: var(--shadow-card);
+}
+
+.metadata-table td {
+  color: var(--aws-text-muted);
+  padding-right: 12px;
+}
+
+.metadata-table th {
+  color: var(--aws-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.btn-map-control {
+  background: #ffffff;
+  border: 1px solid var(--aws-border-medium);
+  color: var(--aws-text-primary);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+
+.btn-map-control:hover {
+  background: #f2f3f3;
+}
+
+/* AWS Console Footer */
+.aws-footer {
+  height: var(--footer-height);
+  background-color: var(--aws-navy-subbar);
+  color: #aab7b8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  z-index: 1000;
+  border-top: 1px solid #232f3e;
+}
+
+/* Leaflet Custom Marker Icons */
+.marker-origin {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #1d8102;
+  color: #fff;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.marker-dest {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #dc2626;
+  color: #fff;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .console-body {
+    flex-direction: column-reverse;
+  }
+  .console-sidebar {
+    width: 100%;
+    height: 50vh;
+    border-right: none;
+    border-top: 1px solid var(--aws-border-medium);
+  }
+  .console-main {
+    height: 50vh;
+  }
+}
