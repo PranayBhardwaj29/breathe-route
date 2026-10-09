@@ -218,3 +218,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# AWS SAM build output
+.aws-sam/
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# Local cache and logs
+cache/
+*.log
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
