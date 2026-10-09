@@ -251,19 +251,6 @@ Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` i
 
 ---
 
-## 🎬 3-Minute Demo Video Script (For Hackathon Judges)
-
-| Timestamp | Video Visual | Spoken Narration (What to say) |
-| :--- | :--- | :--- |
-| **0:00 – 0:30** | **Slide / Camera**: Show Delhi traffic smog headline or cycling in Delhi. | *"Every day in Delhi, hundreds of thousands of cyclists, delivery riders, and commuters navigate one of the most polluted cities on Earth. When you open Google Maps, it gives you the fastest route. But for a cyclist breathing 3 times harder than a car driver, the fastest route is often straight down a congested, diesel-choked arterial road. We built **Breathe Route** to answer a simple, urgent question: which route, and when, exposes you to the least pollution?"* |
-| **0:30 – 1:15** | **Live App**: Open `http://localhost:3000`. Click **CP ➔ India Gate** preset. Show routes rendering on OpenStreetMap. | *"Here is Breathe Route in action. We enter Connaught Place to India Gate. Instantly, our system queries live bike routing and cross-references real-time PM2.5 readings from Delhi monitoring stations. Instead of just showing distance, the app samples the route every 200 meters using Inverse-Distance Weighting. Notice the clear trade-off: **Route 3 is +2 minutes, but delivers a cleaner commute** by routing through tree-lined avenues rather than high-exhaust corridors."* |
-| **1:15 – 1:50** | **Live App**: Click through the 3 route alternatives, show route polylines changing colors on map. Hover over **Wind Drift Arrow**. | *"The routes are color-coded directly using the Indian National AQI scale. Notice these wind-drift indicators on the map: our system factors in live wind speed and direction from Open-Meteo, showing riders exactly how particulate plumes are drifting across the city in real time."* |
-| **1:50 – 2:25** | **Live App**: Scroll to **Best Time to Leave** timeline and **Particulate Source Likelihood** card. | *"Now, what if you don't have to leave right this second? Look at our Departure Optimizer. Using the Copernicus atmospheric forecast model, it analyzes the next 12 hours. Here, it tells the rider: 'Postponing departure to 8:00 AM can reduce exposure by 37%.' Below, our empirical source apportionment model breaks down the current primary culprit—in this evening rush hour, 42% is direct vehicular exhaust."* |
-| **2:25 – 2:50** | **Terminal / Architecture**: Show `template.yaml` and `sam build` output or AWS Lambda Console. | *"Under the hood, Breathe Route is built entirely on AWS. We used AWS SAM to deploy a Python Lambda function with an AWS Lambda Function URL. It requires zero API Gateway overhead, uses a zero-dependency standard library design that deploys in seconds, and runs completely within the AWS Free Tier at zero cost."* |
-| **2:50 – 3:00** | **App Header / Closing**: Show clean AWS-themed console and GitHub repo. | *"Real impact for Delhi riders, 100% verified live data, and fully functional on AWS. That is Breathe Route. Thank you!"* |
-
----
-
 ## 👥 Contributors & Acknowledgements
 - Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
 - Data telemetry provided by **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.
