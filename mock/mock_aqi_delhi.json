@@ -1,0 +1,70 @@
+{
+  "cached_at": "2026-10-09T15:17:47.170602+00:00",
+  "source": "Open-Meteo Copernicus",
+  "stations": [
+    {
+      "name": "Central Delhi (Connaught Place / Mandir Marg)",
+      "lat": 28.599998,
+      "lng": 77.20001,
+      "pm25": 60.3,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "South Delhi (R K Puram / Siri Fort)",
+      "lat": 28.599998,
+      "lng": 77.20001,
+      "pm25": 126.2,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "North Delhi (Civil Lines / Delhi University)",
+      "lat": 28.700005,
+      "lng": 77.20001,
+      "pm25": 60.3,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "East Delhi (Anand Vihar / Patparganj)",
+      "lat": 28.599998,
+      "lng": 77.30002,
+      "pm25": 60.3,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "West Delhi (Punjabi Bagh / Janakpuri)",
+      "lat": 28.700005,
+      "lng": 77.100006,
+      "pm25": 60.3,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "South-West (IGI Airport / Dwarka)",
+      "lat": 28.599998,
+      "lng": 77.100006,
+      "pm25": 126.2,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "North-West (Rohini / Pitampura)",
+      "lat": 28.700005,
+      "lng": 77.100006,
+      "pm25": 60.3,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    },
+    {
+      "name": "South-East (Okhla / Nehru Nagar)",
+      "lat": 28.5,
+      "lng": 77.30002,
+      "pm25": 126.2,
+      "updated_at": "2026-10-09T20:30",
+      "source": "Open-Meteo Air Quality (Live Copernicus)"
+    }
+  ]
+}

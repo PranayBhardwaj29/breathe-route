@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Breathe Route - Air Quality Cycling Route Optimizer (WeMakeDevs x AWS Hackathon)
+
+Globals:
+  Function:
+    Timeout: 25
+    MemorySize: 256
+    LoggingConfig:
+      LogFormat: JSON
+
+Resources:
+  BreatheRouteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: app.lambda_handler
+      Runtime: python3.12
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          PYTHONUNBUFFERED: "1"
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins:
+            - "*"
+          AllowMethods:
+            - POST
+            - OPTIONS
+          AllowHeaders:
+            - Content-Type
+            - Authorization
+            - X-Api-Key
+          MaxAge: 300
+
+Outputs:
+  BreatheRouteFunctionUrl:
+    Description: "Public Function URL for Breathe Route API"
+    Value: !GetAtt BreatheRouteFunctionUrl.FunctionUrl
+  BreatheRouteFunctionArn:
+    Description: "Breathe Route Lambda Function ARN"
+    Value: !GetAtt BreatheRouteFunction.Arn
