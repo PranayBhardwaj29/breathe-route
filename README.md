@@ -1,6 +1,8 @@
 # Breathe Route & Canopy 🚲🍃🌳
 > **Unified Clean-Air Cycling Navigation & Urban Forestry Intelligence for Delhi NCR**  
 > *Built for Environmental Hacks by AWS × WeMakeDevs (Air Track)*
+> 
+> **Primary focus:** The Tree Recommendation System is the main feature of the project, while the Cycle Route Finder acts as an additional supporting feature for clean-air mobility.
 
 [![AWS SAM](https://img.shields.io/badge/AWS-SAM%20%7C%20Lambda-orange?logo=amazon-aws)](https://aws.amazon.com/serverless/sam/)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/)
@@ -14,21 +16,21 @@
 
 Delhi NCR faces dual compounding atmospheric and environmental crises: **toxic ambient particulate pollution (PM2.5)** and **extreme urban heat island stress**.
 
-Conventional mapping tools optimize only for the fastest travel time, routing cyclists and delivery riders through toxic vehicle emission hotspots (Ring Road, ITO, CP circles). At the same time, municipal tree planting initiatives frequently select sapling species arbitrarily without grounding plans in local environmental baseline data, species particulate capture efficacy, heat mitigation, or water requirements.
+Conventional mapping tools optimize only for the fastest travel time, routing cyclists and delivery riders through toxic vehicle emission hotspots (Ring Road, ITO, CP circles). At the same time, municipal tree planting initiatives frequently select sapling species arbitrarily without grounding plans in local environmental baseline data, species particulate capture efficiency, heat mitigation, or water requirements.
 
 **Breathe Route & Canopy merges both systems into a single, cohesive, high-impact environmental intelligence platform**:
 
-1. **🚴 Clean-Air Cycling Navigation Engine (Breathe Route)**:
+1. **🌳 Tree Recommendation System (Primary Feature)**:
+   - Matches any place or coordinate to the nearest microclimate study sites (Anand Lok, Wazirpur, Sec-51 Gurugram).
+   - Establishes seasonal baseline pressures (particulate burden, heat index ≥ 35 °C hours, VPD, rainfall).
+   - Ranks optimal tree species on a multi-criteria 0–100 fit score (particulate capture, canopy cooling, drought resilience, local suitability, ozone/BVOC penalty).
+   - Allocates trees across 290+ urban planting patches with diversity caps, and computes **20-year growth curves, canopy shade (m²), sapling survival, PM2.5 capture (kg), and costs (INR)** visualized via interactive Chart.js graphs.
+
+2. **🚴 Cycle Route Finder (Additional Feature)**:
    - Evaluates alternative cycling corridors between any points in Delhi NCR.
    - Calculates length-weighted **PM2.5 exposure scores** using 200m Inverse-Distance Weighting (IDW) sampled from real-time monitoring stations.
    - Presents transparent trade-offs: `"+2 min, 18% less pollution exposure"`.
    - Computes a predictive **Best Time to Leave** 12-hour departure forecast and empirical **Particulate Source Likelihood** (vehicular exhaust, road dust, biomass smoke).
-
-2. **🌳 Urban Forestry Recommender Engine (Canopy)**:
-   - Matches any place or coordinate to nearest microclimate study sites (Anand Lok, Wazirpur, Sec-51 Gurugram).
-   - Establishes seasonal baseline pressures (particulate burden, heat index &ge; 35 °C hours, VPD, rainfall).
-   - Ranks optimal tree species on a multi-criteria 0–100 fit score (particulate capture, canopy cooling, drought resilience, local suitability, ozone/BVOC penalty).
-   - Allocates trees across 290+ urban planting patches with diversity caps, and computes **20-year growth curves, canopy shade (m²), sapling survival, PM2.5 capture (kg), and costs (INR)** visualized via interactive Chart.js graphs.
 
 ---
 
@@ -255,8 +257,6 @@ When prompted:
 - **Stack Name**: `breathe-route`
 - **AWS Region**: `ap-south-1`
 - **Allow SAM CLI to create IAM roles**: `Y`
-
-
 - **BreatheRouteFunction Function URL may not have authorization defined**: `y` (public endpoint)
 
 Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` in `frontend/app.js`.
@@ -267,6 +267,8 @@ Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` i
 
 - Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
 - Environmental telemetry: **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.
-- vanshika
-- navya
-- vansh
+- Contributors:
+  - [Pranay Bhardwaj](https://github.com/PranayBhardwaj29)
+  - [Navya Gupta](https://github.com/navyagupta480)
+  - [Vanshika V](https://github.com/vanshikav660)
+  - [Vansh Vaibhav](https://github.com/Vansh-Vaibhav)
