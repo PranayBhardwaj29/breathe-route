@@ -265,5 +265,6 @@ Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` i
 
 ## 👥 Contributors & Acknowledgements
 vanshika
-- Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
+-Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
 - Environmental telemetry: **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.
+- navya
