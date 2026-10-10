@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canopy: which tree should go here?</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10231a;--mut:#5a6c61;--line:#d3ddd6;--bg:#f3f6f4;--g:#1f7a4d;--gold:#e8a317}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 'Public Sans',sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,.brand,.big{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+.top{position:absolute;z-index:1000;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:18px 28px;pointer-events:none}
+.brand{font-size:1.5rem;font-weight:700;color:#fff;text-shadow:0 1px 8px #0008}.top span{color:#fff;font-size:.9rem;text-shadow:0 1px 6px #0009}
+.hero{position:relative;height:68vh;min-height:520px}#map{position:absolute;inset:0;background:#cfd8d2}
+.card{position:absolute;z-index:1000;left:28px;top:70px;width:min(390px,calc(100% - 56px));background:#fff;padding:22px;border-radius:8px;box-shadow:0 10px 36px #0004}
+.card h1{font-size:1.9rem;line-height:1.08;margin:0 0 6px}.card p{margin:0 0 14px;color:var(--mut);font-size:.92rem}
+form{display:flex;gap:8px}input{flex:1;min-width:0;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font:inherit}
+input:focus{outline:2px solid var(--g);border-color:transparent}
+.btn{padding:11px 16px;border:0;border-radius:6px;background:var(--g);color:#fff;font-weight:600;font-size:.95rem;font-family:inherit;cursor:pointer}
+.btn:disabled{opacity:.6;cursor:wait}.chips{margin-top:12px;font-size:.82rem;color:var(--mut)}
+.chips button{margin:4px 6px 0 0;padding:4px 10px;border:1px solid var(--line);border-radius:99px;background:#fff;cursor:pointer;font:inherit;color:var(--ink)}
+.chips button:hover{border-color:var(--g);color:var(--g)}.err{color:#b3261e;font-size:.88rem;margin-top:10px}
+.seg{position:absolute;z-index:1000;top:66px;right:28px;display:flex;background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 4px 16px #0004}
+.seg button{border:0;background:none;padding:8px 14px;font:inherit;font-size:.85rem;cursor:pointer}.seg .on{background:var(--ink);color:#fff}
+.legend{position:absolute;z-index:1000;left:28px;bottom:26px;background:#fffffff0;padding:12px 16px;border-radius:8px;font-size:.84rem;max-width:min(420px,calc(100% - 56px));display:none}
+.legend div{display:flex;align-items:center;gap:8px;margin:2px 0}.dot{width:11px;height:11px;border-radius:50%;flex:none}
+.pin{width:20px;height:20px;border-radius:50% 50% 50% 0;background:var(--gold);transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 2px 8px #0008}
+.lbl{background:#10231a;color:#fff;border:0;box-shadow:none;font-size:.8rem}.lbl:before{display:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}section{padding:54px 0 8px;display:none}.show section{display:block}
+.empty{padding:28px 0;color:var(--mut)}.show .empty{display:none}
+.kick{font-size:.85rem;font-weight:600;color:var(--g);margin-bottom:6px}h2{font-size:2rem;line-height:1.1;margin:0 0 10px;max-width:22ch}
+.lead{max-width:68ch;color:#33463a;font-size:1.02rem}.needs{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:22px;max-width:900px}
+.needs span{font-size:.8rem;color:var(--mut)}.needs i{display:block;height:6px;background:#dfe8e2;border-radius:3px;margin-top:5px}.needs b{display:block;height:100%;background:var(--g);border-radius:3px}
+.tw{overflow-x:auto;margin-top:18px;background:#fff;border-radius:8px;box-shadow:0 1px 0 var(--line)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}th{text-align:left;font-weight:600;font-size:.78rem;color:var(--mut);padding:13px 14px;border-bottom:2px solid var(--ink);white-space:nowrap;background:#fff;position:sticky;top:0}
+td{padding:14px;border-bottom:1px solid var(--line);vertical-align:middle}tr:last-child td{border:0}td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.sw{display:inline-block;width:10px;height:28px;border-radius:2px;vertical-align:middle;margin-right:10px}.sp{display:inline-block;vertical-align:middle}.sp em{display:block;font-size:.78rem;color:var(--mut)}
+.sc{display:flex;align-items:center;gap:8px;min-width:110px}.sc div{flex:1;height:6px;background:#e4ebe6;border-radius:3px}.sc i{display:block;height:100%;border-radius:3px}.sc b{font-variant-numeric:tabular-nums}
+.why{color:#44564b;font-size:.82rem;min-width:220px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 8px}.tabs button{padding:8px 15px;border:1px solid var(--line);background:#fff;border-radius:99px;font:inherit;font-size:.86rem;cursor:pointer}.tabs .on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chart{background:#fff;border-radius:8px;padding:20px 20px 12px;height:420px;position:relative;box-shadow:0 1px 0 var(--line)}.note{font-size:.84rem;color:var(--mut);margin:10px 0 0;max-width:80ch}
+.facts{display:flex;flex-wrap:wrap;border-top:2px solid var(--ink);margin:20px 0 18px}.facts div{flex:1;min-width:170px;padding:14px 18px 4px 0}.facts div+div{padding-left:18px;border-left:1px solid var(--line)}
+.big{display:block;font-size:2rem;font-weight:700;line-height:1.1}.facts span{font-size:.84rem;color:var(--mut)}
+.dl{margin:22px 0 0;display:flex;gap:10px}.dl button{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+footer{padding:44px 0 50px;color:var(--mut);font-size:.82rem}
+@media(max-width:760px){.needs{grid-template-columns:repeat(2,1fr)}.hero{height:74vh}.seg{top:auto;bottom:26px;right:14px}.card{left:14px;top:58px}h2{font-size:1.6rem}}
+</style></head>
+<body>
+<div class="hero">
+  <div class="top"><div class="brand">Canopy</div><span>Urban tree planning for Delhi</span></div>
+  <div id="map"></div>
+  <div class="seg"><button class="on" data-base="sat">Satellite</button><button data-base="st">Streets</button></div>
+  <div class="card">
+    <h1>Which tree should go here?</h1>
+    <p>Search a place or paste coordinates. We match it to the nearest study site and plan its planting spaces.</p>
+    <form id="form"><input id="q" placeholder="e.g. Anand Lok, New Delhi" autocomplete="off"><button class="btn" id="go">Search</button></form>
+    <div class="chips" id="chips"></div><div class="err" id="err"></div>
+  </div>
+  <div class="legend" id="legend"></div>
+</div>
+
+<div class="wrap" id="app">
+  <p class="empty">Search above to see the planting spaces, the recommended species and how the plan plays out over twenty years.</p>
+
+  <section id="s1"><div class="kick">The site</div><h2 id="sh"></h2><p class="lead" id="st"></p><div class="needs" id="needs"></div></section>
+
+  <section><div class="kick">What to plant</div><h2>The species that fit this site best</h2>
+    <p class="lead">Ranked on how well each tree handles the pollution, heat and water conditions above, weighed against its survival, local suitability and cost.</p>
+    <div class="tw"><table><thead><tr><th>Species</th><th>Fit score</th><th>PM2.5 captured / yr</th><th>Air cooling</th><th>Canopy at maturity</th><th>Water / yr</th><th>10-year survival</th><th>7-year cost</th><th>Why it fits</th></tr></thead><tbody id="tb"></tbody></table></div>
+    <p class="note">Per mature tree. PM2.5 is rescaled to this site's measured concentrations.</p></section>
+
+  <section><div class="kick">How they grow</div><h2>Benefits build slowly, then compound</h2>
+    <p class="lead">Every impact is scaled by how much canopy a tree has reached and by how many saplings survive, so young plantings deliver little at first.</p>
+    <div class="tabs" id="tabs"></div><div class="chart"><canvas id="cA"></canvas></div><p class="note" id="nA"></p></section>
+
+  <section><div class="kick">What the plan delivers</div><h2>The whole planting plan over twenty years</h2>
+    <div class="facts" id="facts"></div><div class="chart"><canvas id="cB"></canvas></div>
+    <p class="note">Spending is front-loaded: planting, saplings and guards come first, then maintenance falls to a low yearly amount while captured pollution keeps rising with canopy.</p>
+    <div class="dl"><button class="btn" id="dj">Download results (JSON)</button><button class="btn" id="dg">Download map layers (GeoJSON)</button></div></section>
+
+  <footer>Projections are modelled estimates built on synthetic growth, survival and cost parameters. Treat them as comparisons between species, not forecasts.</footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const api=async(u,o)=>{const r=await fetch(u,o),j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.detail||r.statusText);return j};
+const fmt=(x,d=0)=>Number(x).toLocaleString('en-IN',{maximumFractionDigits:d});
+const inr=x=>x>=1e7?`₹${(x/1e7).toFixed(2)} crore`:x>=1e5?`₹${(x/1e5).toFixed(1)} lakh`:`₹${fmt(x)}`;
+Chart.defaults.font.family="'Public Sans',sans-serif";Chart.defaults.color='#44564b';
+const map=L.map('map',{zoomControl:false}).setView([28.6,77.2],11);L.control.zoom({position:'bottomright'}).addTo(map);
+const base={sat:L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles © Esri'}),
+ st:L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'})};
+let cur=base.sat.addTo(map);
+$$('[data-base]').forEach(b=>b.onclick=()=>{map.removeLayer(cur);cur=base[b.dataset.base].addTo(map);$$('[data-base]').forEach(x=>x.classList.toggle('on',x===b))});
+const ov=L.layerGroup().addTo(map),rs=L.layerGroup().addTo(map);
+const pad={paddingTopLeft:[innerWidth>900?430:30,90],paddingBottomRight:[30,30]};
+
+api('/api/overview').then(o=>{
+  const pts=[];o.patches.forEach(p=>{L.circle([p.lat,p.lon],{radius:Math.max(Math.sqrt(p.area_m2/Math.PI),5),color:'#9be3b4',weight:1,fillOpacity:.35}).addTo(ov)});
+  o.sites.forEach(s=>{pts.push([s.lat,s.lon]);L.circleMarker([s.lat,s.lon],{radius:7,color:'#fff',weight:2,fillColor:'#e8a317',fillOpacity:1}).bindTooltip(s.name,{permanent:true,direction:'top',className:'lbl'}).addTo(ov)});
+  if(pts.length)map.fitBounds(pts,{...pad,maxZoom:15});
+  $('#chips').innerHTML='Try a study site: '+o.sites.map((s,i)=>`<button data-i="${i}">${s.name}</button>`).join('');
+  $$('#chips button').forEach(b=>b.onclick=()=>{const s=o.sites[b.dataset.i];$('#q').value=s.name;go({query:s.name,lat:s.lat,lon:s.lon})});
+}).catch(e=>$('#err').textContent='Could not load site data: '+e.message);
+
+$('#form').onsubmit=e=>{e.preventDefault();const q=$('#q').value.trim();if(!q)return;
+  const m=q.match(/^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$/);go(m?{lat:+m[1],lon:+m[2]}:{query:q})};
+async function go(body){$('#go').disabled=true;$('#go').textContent='Searching';$('#err').textContent='';
+  try{render(await api('/api/recommend',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({top_k:6,...body})}))}
+  catch(e){$('#err').textContent=e.message}$('#go').disabled=false;$('#go').textContent='Search'}
+
+let R,chA,chB,metric='canopy';
+function render(r){R=r;const res=r.result,m=res.matched_location,q=res.input_point,plan=res.patch_plan,ps=res.plan_summary;
+  ov.clearLayers();rs.clearLayers();const pts=[[q.lat,q.lon],[m.lat,m.lon]];
+  plan.forEach(p=>{pts.push([p.lat,p.lon]);const rad=Math.max(Math.sqrt(p.area_m2/Math.PI),5);
+    if(p.recommended){const c=r.colors[p.recommended];
+      L.circle([p.lat,p.lon],{radius:rad,color:c,weight:2.5,fillColor:c,fillOpacity:.5}).bindPopup(`<b>${p.common_name}</b><br><i>${p.scientific_name}</i><br>${p.n_trees} trees on ${fmt(p.area_m2)} m² (${p.site_type})<br>Fit ${fmt(p.fit_score)}/100`).addTo(rs)}
+    else L.circle([p.lat,p.lon],{radius:rad,color:'#cfcfcf',weight:1.5,dashArray:'5',fillOpacity:.1}).bindTooltip('No species fits this space').addTo(rs)});
+  if(m.distance_km>.03)L.polyline([[q.lat,q.lon],[m.lat,m.lon]],{color:'#fff',weight:2,dashArray:'4 6'}).addTo(rs);
+  L.circleMarker([m.lat,m.lon],{radius:8,color:'#10231a',weight:3,fillColor:'#fff',fillOpacity:1}).bindTooltip(`Study site: ${m.name}`,{className:'lbl'}).addTo(rs);
+  L.marker([q.lat,q.lon],{icon:L.divIcon({className:'',html:'<div class="pin"></div>',iconSize:[20,20],iconAnchor:[10,20]})}).bindTooltip('Your search',{className:'lbl'}).addTo(rs);
+  map.fitBounds(pts,{...pad,maxZoom:18});
+  const names={};plan.forEach(p=>p.recommended&&(names[p.recommended]=p.common_name));
+  const lg=$('#legend');lg.style.display=Object.keys(names).length?'block':'none';
+  lg.innerHTML='<b>Planting spaces</b>'+Object.entries(ps.by_species).map(([id,n])=>`<div><i class="dot" style="background:${r.colors[id]}"></i>${names[id]}: ${fmt(n)} trees</div>`).join('');
+  document.body.classList.add('show');
+  const b=res.baseline,a=b.annual,n=res.needs,pm=a.mean.pm2_5,ex=100*(a.exceedance_frac.pm2_5||0),hot=100*a.heat_hours_frac;
+  $('#sh').textContent=`${n.pm_need>=n.heat_need?'Air quality':'Heat'} is the main pressure around ${m.name}`;
+  $('#st').innerHTML=`PM2.5 averages <b>${fmt(pm)} µg/m³</b> here and is above the 60 µg/m³ limit in <b>${fmt(ex)}%</b> of hours. About <b>${fmt(hot)}%</b> of hours feel like 35 °C or hotter, and the site receives roughly ${fmt(b.precip_mm_per_year)} mm of rain a year. The recommendations below are chosen for exactly this mix.`+(res.warnings.length?`<br><small>${res.warnings.join(' ')}</small>`:'');
+  const nm={pm_need:'Particle pollution',heat_need:'Heat stress',voc_sensitivity:'Ozone sensitivity',water_scarcity:'Water scarcity',waterlogging_risk:'Waterlogging risk'};
+  $('#needs').innerHTML=Object.entries(nm).map(([k,l])=>`<div><span>${l}</span><i><b style="width:${Math.round(n[k]*100)}%"></b></i></div>`).join('');
+  $('#tb').innerHTML=r.table.map(t=>`<tr><td><span class="sw" style="background:${t.color}"></span><span class="sp"><b>${t.common_name}</b><em>${t.scientific_name}</em></span></td>
+   <td><div class="sc"><div><i style="width:${t.score}%;background:${t.color}"></i></div><b>${fmt(t.score)}</b></div></td><td class="n">${fmt(t.pm25_g)} g</td><td class="n">${fmt(t.cooling_c,1)} °C</td>
+   <td class="n">${fmt(t.crown_m2)} m²</td><td class="n">${fmt(t.water_l)} L</td><td class="n">${fmt(t.survival10)}%</td><td class="n">${inr(t.cost7)}</td><td class="why">${(t.why||[]).slice(0,2).join('; ')||'Balanced fit overall'}</td></tr>`).join('');
+  const P=r.projection;$('#tabs').innerHTML=Object.entries(M).map(([k,v])=>`<button data-k="${k}" class="${k===metric?'on':''}">${v[0]}</button>`).join('');
+  $$('#tabs button').forEach(x=>x.onclick=()=>{metric=x.dataset.k;$$('#tabs button').forEach(y=>y.classList.toggle('on',y===x));drawA()});
+  drawA();const T=P.totals,L20=T.cum_cost.length-1,kg=T.pm25_cum_kg[L20];
+  $('#facts').innerHTML=[[fmt(ps.trees),'trees planted'],[`${fmt(kg,1)} kg`,'PM2.5 captured in 20 years'],[`${fmt(T.shade_m2[L20])} m²`,'canopy shade by year 20'],[inr(T.cum_cost[L20]),'total cost over 20 years'],[kg?`₹${fmt(T.cum_cost[L20]/kg)}`:'n/a','cost per kg of PM2.5 captured']].map(([a,b])=>`<div><span class="big">${a}</span><span>${b}</span></div>`).join('');
+  drawB(T,P.years);
+  $('#dj').onclick=()=>dl(res,'canopy-results.json');$('#dg').onclick=()=>dl(r.geojson,'canopy-map.geojson');
+  setTimeout(()=>$('#s1').scrollIntoView({behavior:'smooth'}),350)}
+const dl=(o,n)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,2)]));a.download=n;a.click()};
+const M={canopy:['Growth curve','canopy','Share of mature canopy reached (%)','How fast each species fills out its crown. Fast growers start delivering benefits sooner.'],
+ pm25:['Impact scaled by size','pm25','PM2.5 captured per planted tree per year (g)','Yearly particle capture per planted tree, scaled by canopy size and by how many trees survive.'],
+ survival:['Survival rate','survival','Planted trees still alive (%)','Share of saplings expected to survive; most losses happen in the first few years.'],
+ cost:['Cost timeline','cum_cost','Cumulative cost per planted tree (₹)','Planting is the big first cost; the curve then flattens as maintenance drops.']};
+function drawA(){const P=R.projection,m=M[metric];$('#nA').textContent=m[3];chA&&chA.destroy();
+  chA=new Chart($('#cA'),{type:'line',data:{labels:P.years,datasets:P.species.map(s=>({label:s.common_name,data:s[m[1]],borderColor:s.color,backgroundColor:s.color,borderWidth:2.4,pointRadius:0,pointHoverRadius:4,tension:.3}))},
+   options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{x:{title:{display:true,text:'Years after planting'},grid:{display:false}},y:{beginAtZero:true,title:{display:true,text:m[2]},grid:{color:'#e3ebe5'}}},plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}})}
+function drawB(T,y){chB&&chB.destroy();
+  chB=new Chart($('#cB'),{data:{labels:y,datasets:[
+   {type:'bar',label:'Cost each year (₹)',data:T.annual_cost,backgroundColor:'#e8a31788',yAxisID:'y',order:3},
+   {type:'line',label:'Cumulative cost (₹)',data:T.cum_cost,borderColor:'#b87a00',borderWidth:2.4,pointRadius:0,tension:.3,yAxisID:'y',order:2},
+   {type:'line',label:'PM2.5 captured each year (kg)',data:T.pm25_kg,borderColor:'#1f7a4d',borderWidth:2.6,pointRadius:0,tension:.3,yAxisID:'y1',order:1},
+   {type:'line',label:'PM2.5 captured, cumulative (kg)',data:T.pm25_cum_kg,borderColor:'#1f7a4d',borderDash:[6,5],borderWidth:2,pointRadius:0,tension:.3,yAxisID:'y1',order:1}]},
+   options:{maintainAspectRatio:false,interaction:{mode:'index',intersect:false},scales:{x:{title:{display:true,text:'Years after planting'},grid:{display:false}},
+    y:{beginAtZero:true,position:'left',title:{display:true,text:'Cost (₹)'},grid:{color:'#e3ebe5'}},y1:{beginAtZero:true,position:'right',title:{display:true,text:'PM2.5 captured (kg)'},grid:{display:false}}},
+    plugins:{legend:{position:'bottom',labels:{usePointStyle:true,boxWidth:8}}}}})}
+</script></body></html>

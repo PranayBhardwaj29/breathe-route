@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breathe Route | AWS Delhi Air Quality Cycling Optimizer</title>
-  <meta name="description" content="Clean air cycling navigation for Delhi built on AWS Lambda & SAM. Minimizes PM2.5 pollution exposure with live air quality and weather telemetry.">
+  <title>Breathe Route & Canopy | AWS Delhi Clean-Air Navigator & Urban Forestry Recommender</title>
+  <meta name="description" content="Integrated environmental application for Delhi NCR: clean-air cycling navigation avoiding PM2.5 exposure + Canopy tree planting recommendations to mitigate air pollution and heat stress over 20 years. Built on AWS Lambda & SAM.">
 
-  <!-- Open Sans / Amazon Ember System Font Stack -->
+  <!-- Modern Typography: Plus Jakarta Sans & Inter + Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -25,10 +25,22 @@
       </div>
       <div class="brand-divider"></div>
       <div class="service-title">
-        <span class="service-name">Breathe Route</span>
-        <span class="service-tag">Air Quality Navigation</span>
+        <span class="service-name">Breathe Route & Canopy</span>
+        <span class="service-tag">Air Navigation & Urban Forestry</span>
       </div>
       <span class="region-pill">Region: ap-south-1 (Delhi NCR)</span>
+
+      <!-- Primary App Navigation Tabs -->
+      <nav class="nav-mode-tabs">
+        <button class="nav-mode-btn active" id="tabNavMode" data-mode="navigation">
+          <span class="tab-icon">🚴</span>
+          <span>Clean-Air Navigation</span>
+        </button>
+        <button class="nav-mode-btn" id="tabCanopyMode" data-mode="canopy">
+          <span class="tab-icon">🌳</span>
+          <span>Canopy Tree Recommender</span>
+        </button>
+      </nav>
     </div>
 
     <div class="nav-right">
@@ -46,163 +58,260 @@
   <!-- Main Console Layout -->
   <div class="console-body">
     <!-- Left Configuration & Results Panel -->
-    <aside class="console-sidebar">
+    <aside class="console-sidebar" id="appSidebar">
       
-      <!-- Route Configuration Card -->
-      <section class="aws-card config-card">
-        <div class="card-title-bar">
-          <h2>Route Configuration</h2>
-          <span class="badge-subtle">Mode: Cycling</span>
-        </div>
-
-        <!-- Delhi Hotspot Presets -->
-        <div class="form-group">
-          <label class="form-label">Delhi Landmark Quick Presets</label>
-          <div class="preset-button-group">
-            <button class="btn-preset active" data-preset="cp-ig">CP ➔ India Gate</button>
-            <button class="btn-preset" data-preset="hk-saket">Hauz Khas ➔ Saket</button>
-            <button class="btn-preset" data-preset="du-rf">DU ➔ Red Fort</button>
-            <button class="btn-preset" data-preset="dwarka-airport">Dwarka ➔ Airport</button>
+      <!-- ========================================== -->
+      <!-- VIEW 1: CLEAN-AIR NAVIGATION SIDEBAR       -->
+      <!-- ========================================== -->
+      <div class="view-panel active" id="navViewPanel">
+        <!-- Route Configuration Card -->
+        <section class="aws-card config-card">
+          <div class="card-title-bar">
+            <h2>Route Configuration</h2>
+            <span class="badge-subtle">Mode: Cycling</span>
           </div>
-        </div>
 
-        <!-- Coordinates / Address Input -->
-        <div class="waypoints-container">
-          <div class="waypoint-row">
-            <span class="waypoint-icon start-icon">A</span>
-            <div class="input-container">
-              <label>Origin</label>
-              <input type="text" id="startInput" value="Connaught Place (28.6328, 77.2197)" readonly>
+          <!-- Delhi Hotspot Presets -->
+          <div class="form-group">
+            <label class="form-label">Delhi Landmark Quick Presets</label>
+            <div class="preset-button-group">
+              <button class="btn-preset active" data-preset="cp-ig">CP ➔ India Gate</button>
+              <button class="btn-preset" data-preset="hk-saket">Hauz Khas ➔ Saket</button>
+              <button class="btn-preset" data-preset="du-rf">DU ➔ Red Fort</button>
+              <button class="btn-preset" data-preset="dwarka-airport">Dwarka ➔ Airport</button>
             </div>
           </div>
 
-          <div class="waypoint-swap-row">
-            <button class="btn-swap" id="swapPointsBtn" title="Swap Origin and Destination">⇅ Swap</button>
-          </div>
+          <!-- Coordinates / Address Input -->
+          <div class="waypoints-container">
+            <div class="waypoint-row">
+              <span class="waypoint-icon start-icon">A</span>
+              <div class="input-container">
+                <label>Origin</label>
+                <input type="text" id="startInput" value="Connaught Place (28.6328, 77.2197)" readonly>
+              </div>
+            </div>
 
-          <div class="waypoint-row">
-            <span class="waypoint-icon end-icon">B</span>
-            <div class="input-container">
-              <label>Destination</label>
-              <input type="text" id="endInput" value="India Gate (28.6129, 77.2295)" readonly>
+            <div class="waypoint-swap-row">
+              <button class="btn-swap" id="swapPointsBtn" title="Swap Origin and Destination">⇅ Swap</button>
+            </div>
+
+            <div class="waypoint-row">
+              <span class="waypoint-icon end-icon">B</span>
+              <div class="input-container">
+                <label>Destination</label>
+                <input type="text" id="endInput" value="India Gate (28.6129, 77.2295)" readonly>
+              </div>
             </div>
           </div>
-        </div>
 
-        <p class="map-hint">Tip: Click anywhere on the map to set Origin (1st click) and Destination (2nd click).</p>
+          <p class="map-hint">Tip: Click anywhere on map to set Origin (1st click) & Destination (2nd click).</p>
 
-        <button class="btn-primary" id="findCleanestBtn">
-          <span>Calculate Cleanest Routes</span>
-        </button>
-      </section>
+          <button class="btn-primary" id="findCleanestBtn">
+            <span>Calculate Cleanest Routes</span>
+          </button>
+        </section>
 
-      <!-- AWS Style Recommendation Alert -->
-      <section class="aws-alert alert-success" id="tradeoffBanner" style="display: none;">
-        <div class="alert-icon">✓</div>
-        <div class="alert-content">
-          <h4 id="tradeoffTitle">+2 min, 18% less exposure</h4>
-          <p id="tradeoffDesc">Recommended route minimizes cumulative PM2.5 exposure along cleaner side avenues.</p>
-        </div>
-      </section>
-
-      <!-- Route Alternatives Comparison -->
-      <section class="aws-card results-card" id="routesResultsSection">
-        <div class="card-title-bar">
-          <h3>Route Alternatives</h3>
-          <span class="badge-subtle" id="routesCountBadge">3 Routes</span>
-        </div>
-
-        <div class="routes-container" id="routesList">
-          <div class="loading-state">
-            <div class="aws-spinner"></div>
-            <span>Evaluating route geometry against live Delhi monitoring stations...</span>
+        <!-- AWS Style Recommendation Alert -->
+        <section class="aws-alert alert-success" id="tradeoffBanner" style="display: none;">
+          <div class="alert-icon">✓</div>
+          <div class="alert-content">
+            <h4 id="tradeoffTitle">+2 min, 18% less exposure</h4>
+            <p id="tradeoffDesc">Recommended route minimizes cumulative PM2.5 exposure along cleaner side avenues.</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Stage 5: Best Time to Leave Forecast Card -->
-      <section class="aws-card forecast-card" id="forecastCard" style="display: none;">
-        <div class="card-title-bar">
-          <h3>Best Time to Leave (Forecast)</h3>
-          <span class="badge-subtle">Estimate</span>
-        </div>
-        
-        <div class="departure-highlight-box" id="departureHighlightBox">
-          <span class="departure-icon">⏱</span>
-          <div class="departure-content">
-            <h4 id="departureTimeHeading">Optimal Departure: 08:00</h4>
-            <p id="departureRecText">Postponing departure can reduce pollution exposure by up to 37%.</p>
+        <!-- Route Alternatives Comparison -->
+        <section class="aws-card results-card" id="routesResultsSection">
+          <div class="card-title-bar">
+            <h3>Route Alternatives</h3>
+            <span class="badge-subtle" id="routesCountBadge">3 Routes</span>
           </div>
-        </div>
 
-        <div class="forecast-timeline-wrap">
-          <label class="form-label">Upcoming 8-Hour PM2.5 Forecast:</label>
-          <div class="forecast-timeline" id="forecastTimeline">
-            <!-- Dynamic forecast hours will render here -->
+          <div class="routes-container" id="routesList">
+            <div class="loading-state">
+              <div class="aws-spinner"></div>
+              <span>Evaluating route geometry against live Delhi monitoring stations...</span>
+            </div>
           </div>
-        </div>
-        <p class="forecast-disclaimer">* Derived from Copernicus CAMS atmospheric model.</p>
-      </section>
+        </section>
 
-      <!-- Stage 5: Pollutant Source Likelihood Card -->
-      <section class="aws-card source-card" id="sourceCard" style="display: none;">
-        <div class="card-title-bar">
-          <h3>Particulate Source Likelihood</h3>
-          <span class="badge-subtle">Empirical Model</span>
-        </div>
+        <!-- Stage 5: Best Time to Leave Forecast Card -->
+        <section class="aws-card forecast-card" id="forecastCard" style="display: none;">
+          <div class="card-title-bar">
+            <h3>Best Time to Leave (Forecast)</h3>
+            <span class="badge-subtle">Estimate</span>
+          </div>
+          
+          <div class="departure-highlight-box" id="departureHighlightBox">
+            <span class="departure-icon">⏱</span>
+            <div class="departure-content">
+              <h4 id="departureTimeHeading">Optimal Departure: 08:00</h4>
+              <p id="departureRecText">Postponing departure can reduce pollution exposure by up to 37%.</p>
+            </div>
+          </div>
 
-        <div class="source-summary-row">
-          <span class="source-label">Primary Contributor:</span>
-          <strong class="source-primary-name" id="sourcePrimaryName">Vehicular Exhaust</strong>
-        </div>
+          <div class="forecast-timeline-wrap">
+            <label class="form-label">Upcoming 8-Hour PM2.5 Forecast:</label>
+            <div class="forecast-timeline" id="forecastTimeline"></div>
+          </div>
+          <p class="forecast-disclaimer">* Derived from Copernicus CAMS atmospheric model.</p>
+        </section>
 
-        <div class="source-bars-container" id="sourceBarsContainer">
-          <!-- Dynamic progress bars -->
-        </div>
+        <!-- Stage 5: Pollutant Source Likelihood Card -->
+        <section class="aws-card source-card" id="sourceCard" style="display: none;">
+          <div class="card-title-bar">
+            <h3>Particulate Source Likelihood</h3>
+            <span class="badge-subtle">Empirical Model</span>
+          </div>
 
-        <p class="source-explanation" id="sourceExplanation">
-          Peak traffic rush hour with low wind dispersion traps vehicular emissions near road level.
-        </p>
-        <p class="forecast-disclaimer">* Empirical estimate based on CPCB diurnal profiles and wind vector.</p>
-      </section>
+          <div class="source-summary-row">
+            <span class="source-label">Primary Contributor:</span>
+            <strong class="source-primary-name" id="sourcePrimaryName">Vehicular Exhaust</strong>
+          </div>
 
-      <!-- National AQI Scale Reference -->
-      <section class="aws-card legend-card">
-        <div class="card-title-bar">
-          <h3>Indian National AQI Scale (PM2.5)</h3>
-        </div>
-        <div class="aqi-grid">
-          <div class="aqi-cell aqi-good">
-            <span class="aqi-name">Good</span>
-            <span class="aqi-range">0-50</span>
-          </div>
-          <div class="aqi-cell aqi-satisfactory">
-            <span class="aqi-name">Satisfactory</span>
-            <span class="aqi-range">51-100</span>
-          </div>
-          <div class="aqi-cell aqi-moderate">
-            <span class="aqi-name">Moderate</span>
-            <span class="aqi-range">101-200</span>
-          </div>
-          <div class="aqi-cell aqi-poor">
-            <span class="aqi-name">Poor</span>
-            <span class="aqi-range">201-300</span>
-          </div>
-          <div class="aqi-cell aqi-very-poor">
-            <span class="aqi-name">Very Poor</span>
-            <span class="aqi-range">301-400</span>
-          </div>
-          <div class="aqi-cell aqi-severe">
-            <span class="aqi-name">Severe</span>
-            <span class="aqi-range">401+</span>
-          </div>
-        </div>
-      </section>
+          <div class="source-bars-container" id="sourceBarsContainer"></div>
 
-      <!-- Disclosures & Model Limitations -->
-      <div class="info-note">
-        <strong>Estimation Model:</strong>
-        <span id="limitationsText">Inverse-distance weighted (IDW) average sampled every ~200m along the route from live monitoring points. Real street-level microclimates may vary near busy intersections.</span>
+          <p class="source-explanation" id="sourceExplanation">
+            Peak traffic rush hour with low wind dispersion traps vehicular emissions near road level.
+          </p>
+          <p class="forecast-disclaimer">* Empirical estimate based on CPCB diurnal profiles and wind vector.</p>
+        </section>
+
+        <!-- National AQI Scale Reference -->
+        <section class="aws-card legend-card">
+          <div class="card-title-bar">
+            <h3>Indian National AQI Scale (PM2.5)</h3>
+          </div>
+          <div class="aqi-grid">
+            <div class="aqi-cell aqi-good"><span class="aqi-name">Good</span><span class="aqi-range">0-50</span></div>
+            <div class="aqi-cell aqi-satisfactory"><span class="aqi-name">Satisfactory</span><span class="aqi-range">51-100</span></div>
+            <div class="aqi-cell aqi-moderate"><span class="aqi-name">Moderate</span><span class="aqi-range">101-200</span></div>
+            <div class="aqi-cell aqi-poor"><span class="aqi-name">Poor</span><span class="aqi-range">201-300</span></div>
+            <div class="aqi-cell aqi-very-poor"><span class="aqi-name">Very Poor</span><span class="aqi-range">301-400</span></div>
+            <div class="aqi-cell aqi-severe"><span class="aqi-name">Severe</span><span class="aqi-range">401+</span></div>
+          </div>
+        </section>
+
+        <div class="info-note">
+          <strong>Estimation Model:</strong>
+          <span id="limitationsText">Inverse-distance weighted (IDW) average sampled every ~200m along the route from live monitoring points. Real street-level microclimates may vary near busy intersections.</span>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: CANOPY TREE RECOMMENDER SIDEBAR    -->
+      <!-- ========================================== -->
+      <div class="view-panel" id="canopyViewPanel">
+        <!-- Canopy Search Card -->
+        <section class="aws-card config-card">
+          <div class="card-title-bar">
+            <h2>Which Tree Should Go Here?</h2>
+            <span class="badge-subtle badge-green">Urban Canopy Plan</span>
+          </div>
+          <p class="card-lead-text">
+            Search a Delhi location or pick a study site to evaluate environmental pressures (PM2.5, heat, water) and generate an optimized 20-year tree planting plan.
+          </p>
+
+          <form id="canopySearchForm" class="canopy-form">
+            <div class="canopy-search-box">
+              <input type="text" id="canopyQueryInput" placeholder="e.g. Anand Lok, New Delhi (or 28.558, 77.218)" autocomplete="off">
+              <button type="submit" class="btn-primary btn-canopy" id="canopySearchBtn">Search</button>
+            </div>
+          </form>
+
+          <div class="chips-container" id="canopyChips">
+            <span class="chips-label">Delhi Study Sites:</span>
+            <div class="chips-list" id="canopyChipsList">
+              <button class="chip-btn" data-site="Anand Lok">Anand Lok</button>
+              <button class="chip-btn" data-site="Wazirpur">Wazirpur</button>
+              <button class="chip-btn" data-site="Sec-51, Gurugram">Sec-51 Gurugram</button>
+            </div>
+          </div>
+
+          <div class="err-msg" id="canopyErrMsg"></div>
+        </section>
+
+        <!-- Environmental Baseline & Needs Card -->
+        <section class="aws-card baseline-card" id="canopyBaselineCard" style="display: none;">
+          <div class="card-title-bar">
+            <h3 id="baselineHeading">Environmental Pressure Baseline</h3>
+            <span class="badge-subtle" id="baselineSiteBadge">Study Site</span>
+          </div>
+
+          <p class="baseline-summary" id="baselineSummaryText"></p>
+
+          <label class="form-label">Site Stress Factors & Mitigation Needs:</label>
+          <div class="needs-grid" id="needsGrid"></div>
+        </section>
+
+        <!-- Species Recommendations Table Card -->
+        <section class="aws-card species-card" id="canopySpeciesCard" style="display: none;">
+          <div class="card-title-bar">
+            <h3>Species Ranked For This Site</h3>
+            <span class="badge-subtle" id="speciesCountBadge">Top Ranked</span>
+          </div>
+          <p class="card-lead-text">
+            Ranked on PM2.5 capture, cooling shade, drought resilience, local suitability, and ozone (BVOC) neutrality.
+          </p>
+
+          <div class="table-responsive">
+            <table class="canopy-table">
+              <thead>
+                <tr>
+                  <th>Species</th>
+                  <th>Fit Score</th>
+                  <th>PM2.5 / yr</th>
+                  <th>Cooling</th>
+                  <th>Canopy</th>
+                  <th>Water / yr</th>
+                  <th>10yr Surv.</th>
+                  <th>7yr Cost</th>
+                  <th>Why it fits</th>
+                </tr>
+              </thead>
+              <tbody id="canopyTableBody"></tbody>
+            </table>
+          </div>
+          <p class="forecast-disclaimer">* Per mature tree. PM2.5 is rescaled to local measured concentration.</p>
+        </section>
+
+        <!-- 20-Year Growth & Compounding Impact Projections -->
+        <section class="aws-card projections-card" id="canopyProjectionsCard" style="display: none;">
+          <div class="card-title-bar">
+            <h3>20-Year Growth & Compound Benefit</h3>
+            <span class="badge-subtle">20-Year Model</span>
+          </div>
+          <p class="card-lead-text" id="metricExplainerText">
+            How tree species scale canopy coverage, survival, and cumulative particulate capture over two decades.
+          </p>
+
+          <!-- Metric Selector Tabs -->
+          <div class="chart-tab-group" id="chartTabs">
+            <button class="chart-tab active" data-metric="canopy">Growth Curve</button>
+            <button class="chart-tab" data-metric="pm25">PM2.5 Impact</button>
+            <button class="chart-tab" data-metric="survival">Survival Rate</button>
+            <button class="chart-tab" data-metric="cost">Cost Timeline</button>
+          </div>
+
+          <div class="chart-container-box">
+            <canvas id="chartA"></canvas>
+          </div>
+
+          <!-- Total Plan Impact Summary Facts -->
+          <div class="plan-facts-grid" id="planFactsGrid"></div>
+
+          <!-- Total Plan Cost vs PM2.5 Captured Chart -->
+          <div class="chart-title-sub">Whole Site Plan: Investment vs Cumulative PM2.5 Captured</div>
+          <div class="chart-container-box">
+            <canvas id="chartB"></canvas>
+          </div>
+
+          <div class="export-actions">
+            <button class="btn-secondary" id="downloadJsonBtn">⬇ Export Results (JSON)</button>
+            <button class="btn-secondary" id="downloadGeoJsonBtn">⬇ Export Layers (GeoJSON)</button>
+          </div>
+        </section>
       </div>
 
     </aside>
@@ -216,22 +325,39 @@
         <div class="map-floating-box top-right">
           <table class="metadata-table">
             <tr>
-              <td>Target Region:</td>
+              <td>Region:</td>
               <th>Delhi NCR</th>
             </tr>
             <tr>
-              <td>Primary Metric:</td>
-              <th>PM2.5 Concentration</th>
+              <td>Active Layer:</td>
+              <th id="activeLayerLabel">Navigation Mode</th>
             </tr>
             <tr>
-              <td>Telemetry Sync:</td>
+              <td>Telemetry:</td>
               <th id="lastUpdatedVal">Live</th>
             </tr>
           </table>
         </div>
 
+        <!-- Floating Map Controls -->
+        <div class="map-floating-box top-left-controls">
+          <div class="map-layer-selector">
+            <button class="btn-layer active" id="btnLayerStreets" data-tile="st">Streets</button>
+            <button class="btn-layer" id="btnLayerSatellite" data-tile="sat">Satellite</button>
+          </div>
+          <button class="btn-toggle-patches" id="btnTogglePatches" title="Show all 290+ urban planting patches in Delhi">
+            <span>🌳 Planting Patches</span>
+          </button>
+        </div>
+
         <div class="map-floating-box bottom-left">
           <button class="btn-map-control" id="resetViewBtn">Reset Delhi Center</button>
+        </div>
+
+        <!-- Canopy Planting Spaces Legend on Map -->
+        <div class="map-floating-box canopy-map-legend" id="canopyMapLegend" style="display: none;">
+          <h4>Allocated Planting Spaces</h4>
+          <div id="canopyLegendItems"></div>
         </div>
       </div>
     </main>
@@ -243,12 +369,14 @@
       <span>Built for <strong>Environmental Hacks by AWS x WeMakeDevs</strong> (Air Track)</span>
     </div>
     <div class="footer-col right">
-      <span>Powered by AWS SAM, Lambda, OpenStreetMap, Open-Meteo & OpenAQ</span>
+      <span>Unified Clean-Air Navigation & Canopy Urban Forestry Engine • AWS SAM, Lambda, Leaflet, Open-Meteo, OpenAQ & Chart.js</span>
     </div>
   </footer>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Chart.js for 20-Year Projections -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   
   <script src="app.js"></script>
 </body>

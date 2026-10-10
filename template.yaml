@@ -5,7 +5,7 @@ Description: Breathe Route - Air Quality Cycling Route Optimizer (WeMakeDevs x A
 Globals:
   Function:
     Timeout: 25
-    MemorySize: 256
+    MemorySize: 512
     LoggingConfig:
       LogFormat: JSON
 
@@ -27,6 +27,7 @@ Resources:
           AllowOrigins:
             - "*"
           AllowMethods:
+            - GET
             - POST
             - OPTIONS
           AllowHeaders:

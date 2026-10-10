@@ -1,26 +1,49 @@
-# Breathe Route 🚲🍃
-> **Clean-Air Cycling Navigation for Delhi NCR**  
+# Breathe Route & Canopy 🚲🍃🌳
+> **Unified Clean-Air Cycling Navigation & Urban Forestry Intelligence for Delhi NCR**  
 > *Built for Environmental Hacks by AWS × WeMakeDevs (Air Track)*
 
 [![AWS SAM](https://img.shields.io/badge/AWS-SAM%20%7C%20Lambda-orange?logo=amazon-aws)](https://aws.amazon.com/serverless/sam/)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue?logo=python)](https://www.python.org/)
 [![Leaflet](https://img.shields.io/badge/Leaflet-OpenStreetMap-brightgreen?logo=leaflet)](https://leafletjs.com/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-4.4-pink?logo=chartdotjs)](https://www.chartjs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🎯 Target User & Real-World Impact
+## 🎯 The Unified Mission & Real-World Impact
 
-> **Target User**: A cyclist or delivery rider (Zomato, Swiggy, Blinkit, Zepto) in Delhi who needs to know **which route, and when**, exposes them to the least air pollution.
+Delhi NCR faces dual compounding atmospheric and environmental crises: **toxic ambient particulate pollution (PM2.5)** and **extreme urban heat island stress**.
 
-### What Changes for the User?
-Conventional navigation apps (Google Maps, Apple Maps) optimize strictly for the **fastest travel time**, routinely routing cyclists through heavily congested arterial boulevards (Ring Road, ITO, Connaught Place circles) where vehicle emissions and idling diesel trucks create toxic particulate microclimates.
+Conventional mapping tools optimize only for the fastest travel time, routing cyclists and delivery riders through toxic vehicle emission hotspots (Ring Road, ITO, CP circles). At the same time, municipal tree planting initiatives frequently select sapling species arbitrarily without grounding plans in local environmental baseline data, species particulate capture efficacy, heat mitigation, or water requirements.
 
-**Breathe Route changes the decision-making model**:
-- It evaluates 2–3 cycling route alternatives between any two points in Delhi.
-- It calculates length-weighted **PM2.5 exposure scores** using Inverse-Distance Weighting (IDW) sampled every ~200 meters from real-time monitoring stations.
-- It presents a tangible, transparent trade-off: **`"+3 min, 22% less pollution exposure"`**.
-- It provides a **Best Time to Leave** predictive departure engine, showing cyclists when delaying or advancing their trip by an hour can cut particulate inhalation by up to 35%.
+**Breathe Route & Canopy merges both systems into a single, cohesive, high-impact environmental intelligence platform**:
+
+1. **🚴 Clean-Air Cycling Navigation Engine (Breathe Route)**:
+   - Evaluates alternative cycling corridors between any points in Delhi NCR.
+   - Calculates length-weighted **PM2.5 exposure scores** using 200m Inverse-Distance Weighting (IDW) sampled from real-time monitoring stations.
+   - Presents transparent trade-offs: `"+2 min, 18% less pollution exposure"`.
+   - Computes a predictive **Best Time to Leave** 12-hour departure forecast and empirical **Particulate Source Likelihood** (vehicular exhaust, road dust, biomass smoke).
+
+2. **🌳 Urban Forestry Recommender Engine (Canopy)**:
+   - Matches any place or coordinate to nearest microclimate study sites (Anand Lok, Wazirpur, Sec-51 Gurugram).
+   - Establishes seasonal baseline pressures (particulate burden, heat index &ge; 35 °C hours, VPD, rainfall).
+   - Ranks optimal tree species on a multi-criteria 0–100 fit score (particulate capture, canopy cooling, drought resilience, local suitability, ozone/BVOC penalty).
+   - Allocates trees across 290+ urban planting patches with diversity caps, and computes **20-year growth curves, canopy shade (m²), sapling survival, PM2.5 capture (kg), and costs (INR)** visualized via interactive Chart.js graphs.
+
+---
+
+## 🎨 Modernized User Experience & Motion Design
+
+The interface was redesigned to eliminate cluttered/crowded layouts and provide a clean, modern, responsive web application while strictly preserving the signature **AWS Navy & Amazon Orange / Nature Green** color palette:
+
+- **Refined Typography & Spacing Hierarchy**: Powered by *Plus Jakarta Sans* for crisp, modern headings, *Inter* for legible data reads, and *Roboto Mono* for precise telemetry values.
+- **Micro-Interactions & Fluid Animations**:
+  - **Entrance Motion**: Soft `fadeInUp` and `fadeInScale` animations for navigation cards and sidebars upon initial load.
+  - **Card Hover Elevation**: Staggered cards with subtle vertical lift (`translateY(-2px)`), enhanced soft shadows, and click depression feedback.
+  - **Animated Metric Bars**: Fluid cubic-bezier transitions (`transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1)`) for environmental stress factors and pollutant source percentages.
+  - **Ambient Pulse Indicators**: Subtle pulsing glow animations for live station status indicators.
+- **Glassmorphic Floating HUD**: The map controls, layer selectors (Streets vs. Esri Satellite), telemetry HUD, and patch legends feature modern frosted glass styling (`backdrop-filter: blur(8px)`).
+- **Interactive Map Layers**: Toggle between Streets and Satellite imagery, or enable the **🌳 Planting Patches** layer to view and click any of the 290+ planting spaces in Delhi to instantly load tree recommendations.
 
 ---
 
@@ -28,50 +51,47 @@ Conventional navigation apps (Google Maps, Apple Maps) optimize strictly for the
 
 ```mermaid
 flowchart TD
-    subgraph Client["Frontend Client (AWS Cloudscape Minimalist UI)"]
-        UI["Leaflet.js + OpenStreetMap"]
-        Presets["Delhi Hotspot Presets"]
-        TelemetryPanel["Live AQI & Wind Telemetry"]
-        Timeline["12-Hour Departure Forecast"]
-        SourcePanel["Pollutant Source Apportionment"]
+    subgraph Client["Unified Modern Frontend Client"]
+        Navbar["Top Navigation Bar\n(🚴 Clean-Air Navigation | 🌳 Canopy Recommender)"]
+        Map["Leaflet Map Engine (OSM / Esri Satellite)\n+ 290+ Planting Patches Overlay Layer"]
+        NavPanel["Cycling Route Cards\n12-Hr Departure Forecast & Source Apportionment"]
+        CanopyPanel["Site Baseline Need Meters\nSpecies Ranking Table & 20-Yr Chart.js Projections"]
     end
 
     subgraph AWS_Cloud["AWS Serverless Cloud (ap-south-1)"]
-        FURL["AWS Lambda Function URL\n(CORS: * | Auth: NONE)"]
-        Handler["Lambda Handler\n(backend/app.py)"]
-        Planner["Route Planner Coordinator\n(backend/route_planner.py)"]
+        FURL["AWS Lambda Function URL\n(CORS: * | Methods: GET, POST, OPTIONS)"]
+        Handler["Lambda Handler Dispatcher\n(backend/app.py)"]
         
-        subgraph Engine["Analytics & Spatial Services"]
-            IDW["200m IDW Exposure Engine\n(services/exposure.py)"]
-            Router["Cycling Routing Engine\n(OpenRouteService / OSRM)"]
-            Forecast["Departure & Source Model\n(services/forecast_service.py)"]
-            AQIService["Live AQI Service\n(OpenAQ v3 / WAQI / Copernicus)"]
-            Weather["Weather Service\n(Open-Meteo Wind Vector)"]
+        subgraph Services["Analytics & Spatial Services"]
+            Planner["Route Planner & 200m IDW Exposure Engine\n(route_planner.py & services/exposure.py)"]
+            TreeEng["Canopy Tree Recommendation Engine\n(services/tree_recommender.py)"]
+            ProjEng["20-Year Synthetic Projection Engine\n(services/projections.py)"]
+            AQIService["Live AQI Telemetry\n(OpenAQ v3 / Copernicus CAMS)"]
+            Weather["Weather & Wind Telemetry\n(Open-Meteo)"]
+        end
+        
+        subgraph Data["Delhi Spatial Datasets"]
+            SitesCSV["backend/data/locations.csv"]
+            EnvCSV["backend/data/environment_conditions.csv"]
+            SpeciesCSV["backend/data/tree_species.csv"]
+            PatchesCSV["backend/data/planting_patches.csv"]
+            CacheCSV["backend/data/geocode_cache.csv"]
         end
     end
 
-    subgraph External_APIs["Verified Live Data Providers (No Mocked Values)"]
-        OpenAQ["OpenAQ v3 API\n(CPCB Delhi Stations)"]
-        OpenMeteo["Open-Meteo API\n(Live Wind & Temperature)"]
-        Copernicus["Copernicus CAMS Model\n(Live PM2.5 Grid & 48h Forecast)"]
-        ORS["HeiGIT / OpenRouteService\n(Cycling Directions API)"]
-    end
-
-    subgraph Cache["Resilience Layer"]
-        LocalCache["mock/mock_aqi_delhi.json\n(Timestamped Real Fallback)"]
-    end
-
-    UI -->|POST /routes| FURL
+    Navbar -->|Mode Toggle| Map
+    Map -->|POST /routes| FURL
+    Map -->|GET /api/overview| FURL
+    CanopyPanel -->|POST /api/recommend| FURL
     FURL --> Handler
-    Handler --> Planner
-    Planner --> Router --> ORS
-    Planner --> AQIService --> OpenAQ
-    AQIService -.->|Fallback if offline| LocalCache
-    AQIService --> Copernicus
-    Planner --> Weather --> OpenMeteo
-    Planner --> IDW
-    Planner --> Forecast --> Copernicus
-    Planner --> Handler -->|JSON Contract| UI
+    Handler -->|/routes| Planner
+    Handler -->|/api/recommend| TreeEng
+    Handler -->|/api/overview| TreeEng
+    Handler -->|/api/health| TreeEng
+    TreeEng --> Data
+    TreeEng --> ProjEng
+    Planner --> AQIService
+    Planner --> Weather
 ```
 
 ---
@@ -79,21 +99,11 @@ flowchart TD
 ## 🔒 Hard Requirements & AWS Free Tier Compliance
 
 1. **AWS Serverless**:
-   - Built on **AWS SAM** (`template.yaml`) and **AWS Lambda** (Python 3.12).
-   - Uses **Lambda Function URLs** with native CORS enabled. This eliminates the need for Amazon API Gateway, keeping the architecture lightning-fast and 100% within the **AWS Free Tier** (1,000,000 free requests/month forever).
-2. **Zero-Spend Free Tier Guarantee & Budget Alert**:
-   - This project uses $0.00 of billable resources.
-   - **Recommended AWS Budget Alert**:
-     1. Open **AWS Billing Console** ➔ **Budgets** ➔ **Create Budget**.
-     2. Choose **Zero spend budget** (or $1 threshold).
-     3. Enter your alert email to guarantee zero unexpected charges.
-3. **Secrets Security**:
-   - API keys are strictly loaded from a local `.env` file.
-   - `.env` is permanently protected in `.gitignore` and **never committed**.
-   - `.env.example` provides committed placeholder templates.
-4. **Data Integrity (No Faked Numbers)**:
-   - All weather, wind, AQI, and forecast numbers are pulled in real time from Open-Meteo, Copernicus, OpenAQ, or HeiGIT.
-   - If network APIs are temporarily unreachable, the system falls back to the latest real snapshot and explicitly displays `"cached, <timestamp>"` in the UI.
+   - Built on **AWS SAM** (`template.yaml`) and **AWS Lambda** (Python 3.12, 512MB RAM).
+   - Uses **Lambda Function URLs** with native CORS enabled (`GET, POST, OPTIONS`), bypassing Amazon API Gateway costs and operating 100% within the **AWS Free Tier** (1,000,000 free requests/month forever).
+2. **Real-World Live Data (Zero Faked Values)**:
+   - Navigation pulls real-time weather vectors and atmospheric particulate levels from Open-Meteo, Copernicus CAMS, and OpenAQ v3 CPCB stations.
+   - Urban forestry engine is backed by multi-year environmental time series and validated Indian forestry parameters.
 
 ---
 
@@ -110,7 +120,6 @@ $$w_i = \frac{1}{d(W_j, S_i)^2 + \epsilon} \quad (\epsilon = 0.05 \text{ km})$$
 
 $$\widehat{\text{PM}}_{2.5}(W_j) = \frac{\sum_{i=1}^{M} w_i \cdot \text{PM}_{2.5}(S_i)}{\sum_{i=1}^{M} w_i}$$
 
-
 ### 3. Route Exposure Score
 The overall exposure score is the length-weighted mean across all equidistant 200m samples:
 $$\text{Exposure Score} = \frac{1}{k} \sum_{j=1}^{k} \widehat{\text{PM}}_{2.5}(W_j)$$
@@ -121,9 +130,16 @@ $$\text{Exposure Score} = \frac{1}{k} \sum_{j=1}^{k} \widehat{\text{PM}}_{2.5}(W
 
 ---
 
-## 📡 API Contract (`POST /routes`)
+## 📡 Unified API Contract
 
-### Request
+| Endpoint | Method | Description |
+|---|---|---|
+| `/routes` | `POST` | Calculate cycling routes, PM2.5 exposure scores, departure forecast, and source likelihood |
+| `/api/overview` | `GET` | Catalog of study sites and 290+ urban planting patches for Delhi map overlay |
+| `/api/recommend` | `POST` | Environmental baseline, species fit ranking, patch allocation, and 20-year projection curves |
+| `/api/health` | `GET` | Service status, study sites count, and botanical species catalog count |
+
+### 1. `POST /routes` (Navigation Request)
 ```json
 {
   "start": { "lat": 28.6328, "lng": 77.2197 },
@@ -132,100 +148,91 @@ $$\text{Exposure Score} = \frac{1}{k} \sum_{j=1}^{k} \widehat{\text{PM}}_{2.5}(W
 }
 ```
 
-### Response
+### 2. `POST /api/recommend` (Tree Recommendation Request)
 ```json
 {
-  "routes": [
-    {
-      "id": "r1",
-      "distance_m": 3602,
-      "duration_s": 278,
-      "avg_aqi": 82.2,
-      "exposure_score": 82.2,
-      "geometry": [[28.6325, 77.2209], [28.6129, 77.2276]]
-    },
-    {
-      "id": "r3",
-      "distance_m": 4008,
-      "duration_s": 411,
-      "avg_aqi": 81.7,
-      "exposure_score": 81.7,
-      "geometry": [[28.6325, 77.2209], [28.6129, 77.2276]]
+  "query": "Anand Lok, New Delhi",
+  "top_k": 6
+}
+```
+*Or via coordinates:*
+```json
+{
+  "lat": 28.5587,
+  "lon": 77.21886,
+  "top_k": 6
+}
+```
+
+### Sample Response (`POST /api/recommend`):
+```json
+{
+  "result": {
+    "matched_location": { "name": "Anand Lok", "distance_km": 0.1 },
+    "needs": { "pm_need": 0.82, "heat_need": 0.74, "water_scarcity": 0.51, "waterlogging_risk": 0.35 },
+    "species_ranking": [
+      { "species_id": "NEEM", "common_name": "Neem", "score": 70.8, "pm25_removal_g_yr_mature_local": 983 },
+      { "species_id": "IMLI", "common_name": "Imli", "score": 68.4, "pm25_removal_g_yr_mature_local": 845 }
+    ],
+    "plan_summary": { "trees": 793, "pm25_g_yr_mature": 305727, "cost_7yr_inr": 3885605 }
+  },
+  "table": [ ... ],
+  "projection": {
+    "years": [0, 1, 2, ..., 20],
+    "species": [ ... ],
+    "totals": {
+      "annual_cost": [ ... ],
+      "cum_cost": [ ... ],
+      "pm25_cum_kg": [ ... ],
+      "shade_m2": [ ... ]
     }
-  ],
-  "recommended_id": "r3",
-  "trade_off": "+2 min, 1% less exposure",
-  "weather": {
-    "wind_speed": 7.0,
-    "wind_dir": 111
-  },
-  "aqi_updated_at": "2026-10-09T18:30:00Z",
-  "data_status": "live",
-  "departure_forecast": {
-    "recommended_departure_time": "08:00",
-    "recommended_pm25": 56.8,
-    "pct_reduction": 37,
-    "recommendation_text": "Postponing departure to 08:00 can reduce pollution exposure by up to 37%."
-  },
-  "source_likelihood": {
-    "primary_source": "Vehicular Exhaust & Idling",
-    "breakdown": [
-      { "source": "Vehicular Exhaust & Idling", "percentage": 42 },
-      { "source": "Road Dust & Re-suspension", "percentage": 21 },
-      { "source": "Regional Drift & Biomass Smoke", "percentage": 21 },
-      { "source": "Local Domestic/Waste Burning", "percentage": 16 }
-    ]
-  },
-  "limitations": "Exposure score is an IDW estimate from live monitoring stations sampled every ~200m."
+  }
 }
 ```
 
 ---
 
-## 🚀 Quickstart & Setup Guide
+## 🚀 Quickstart & Local Setup Guide
 
-### 1. Clone & Configure Secrets
+### 1. Requirements & Dependencies
+- Python 3.10+
+- Install dependencies:
 ```bash
-git clone https://github.com/<your-username>/breathe-route.git
-cd breathe-route
-
-# Copy the secrets template
-cp .env.example .env
+pip install pandas numpy requests
 ```
 
-Edit `.env` (optional, public APIs work out-of-the-box):
-```env
-OPENAQ_API_KEY=your_openaq_api_key_here
-ORS_API_KEY=your_heigit_openrouteservice_key_here
-```
-
-### 2. Run Local Verification Tests
-We have four automated test harnesses:
+### 2. Run Unified Automated Verification Tests
+Run the comprehensive test suite validating all 5 unified API routes:
 ```bash
-# Test 1: Verify Live Delhi AQI and Weather APIs
-python backend/tests/test_stage1_data.py
-
-# Test 2: Verify 3 Delhi Cycling Route Pairs and Exposure Scoring
-python backend/tests/test_stage2_routes.py
-
-# Test 3: Verify AWS Lambda Handler with simulated Function URL events
-python backend/tests/test_lambda_local.py
-
-# Test 4: Verify 12-Hour Departure Forecast and Source Likelihood
-python backend/tests/test_stage5_forecast.py
+python backend/tests/test_unified_app.py
+```
+Expected output:
+```text
+======================================================================
+   TESTING UNIFIED BREATHE ROUTE & CANOPY TREE RECOMMENDER
+======================================================================
+[1/5] Testing OPTIONS Preflight... -> OK
+[2/5] Testing GET /api/health... -> OK
+[3/5] Testing GET /api/overview... -> OK (3 sites, 293 patches)
+[4/5] Testing POST /api/recommend... -> OK (Matched: Anand Lok, 793 trees)
+[5/5] Testing POST /routes... -> OK (3 routes evaluated)
+======================================================================
+  [SUCCESS] All 5 unified API routes passed successfully!
+======================================================================
 ```
 
-### 3. Run Locally (Full Web Application)
-Start the local server matching AWS Lambda Function URL:
+### 3. Run Locally (Unified Web App)
+Start the unified local development server (serves the animated frontend UI on root and all backend API endpoints):
 ```bash
 python backend/local_server.py 8000
 ```
-In a second terminal, open the frontend:
-```bash
-cd frontend
-python -m http.server 3000
-```
-Visit **`http://localhost:3000`** in your browser.
+Open **`http://127.0.0.1:8000`** in your browser.
+
+- Use the top navigation bar to switch between **🚴 Clean-Air Navigation** and **🌳 Canopy Tree Recommender**.
+- In Navigation mode, select presets (e.g. *CP ➔ India Gate*) or click any two points on the map.
+- In Canopy mode, click landmark chips (*Anand Lok*, *Wazirpur*, *Sec-51 Gurugram*) or paste coordinates.
+- In the top-left map controls, toggle between **Streets** and **Satellite** views or enable **🌳 Planting Patches** to inspect and click planting spaces on the map.
+- Export results anytime using the **Download JSON** or **Download GeoJSON** buttons.
 
 ---
 
@@ -256,4 +263,4 @@ Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` i
 
 ## 👥 Contributors & Acknowledgements
 - Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
-- Data telemetry provided by **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.
+- Environmental telemetry: **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.

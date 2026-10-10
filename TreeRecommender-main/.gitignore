@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+aws_credentials*
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Leftovers from the earlier Streamlit version
+.streamlit/
+app.py
+
+# Notes:
+# - data/ is intentionally NOT ignored: the app needs the CSVs to run.
+#   GitHub rejects files over 100 MB; trim or gzip environment_conditions.csv if needed.
+# - data/geocode_cache.csv is kept so demo searches work even if the geocoder is rate-limited.

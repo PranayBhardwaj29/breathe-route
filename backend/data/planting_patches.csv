@@ -1,0 +1,294 @@
+area_m2,est_trees,site_type,site_type_basis,max_width_m,avg_width_m,length_m,shape,patch_id,lat,lon
+19666.7,786,Sports / recreation ground,OSM land use (158% of patch),110.2,55.1,205.5,compact,1,28.551538,77.218633
+8203.1,328,Residential open space,OSM land use (100% of patch),63.4,34.5,120.1,compact,2,28.557212,77.224196
+6769.3,270,Sports / recreation ground,OSM land use (198% of patch),73.9,35.7,107.7,compact,3,28.550523,77.220065
+6694.8,267,Residential open space,OSM land use (100% of patch),50.1,26.2,147.8,compact,4,28.559285,77.221024
+6397.1,255,Institutional land,OSM land use (100% of patch),70.5,34.6,106.0,compact,5,28.554719,77.217272
+4135.7,165,Park / garden,OSM land use (100% of patch),49.5,24.7,90.4,compact,6,28.558475,77.212356
+3911.3,156,Residential open space,OSM land use (100% of patch),58.0,27.3,73.9,compact,7,28.555794,77.222493
+3308.6,132,Sports / recreation ground,OSM land use (100% of patch),48.3,24.5,73.1,compact,8,28.555621,77.215973
+1714.0,68,Residential open space,OSM land use (100% of patch),31.6,17.6,64.7,compact,9,28.560109,77.222415
+1575.4,63,Sports / recreation ground,OSM land use (200% of patch),24.4,11.8,64.7,compact,10,28.551348,77.220956
+1126.2,45,Park / garden,OSM land use (100% of patch),26.0,14.8,46.2,compact,11,28.559303,77.216291
+825.3,33,Institutional land,OSM land use (100% of patch),20.4,12.5,40.8,compact,12,28.560475,77.213818
+823.9,32,Residential open space,OSM land use (100% of patch),20.3,11.1,35.7,compact,13,28.556664,77.225265
+699.3,27,Residential open space,OSM land use (100% of patch),16.9,8.4,59.7,compact,14,28.557435,77.223145
+596.6,23,Residential open space,OSM land use (100% of patch),18.0,9.2,44.8,compact,15,28.557718,77.223642
+474.7,18,Park / garden,OSM land use (100% of patch),14.4,8.7,40.8,compact,16,28.561503,77.214149
+428.9,17,Residential open space,OSM land use (100% of patch),16.2,9.0,25.9,compact,17,28.560759,77.22241
+374.2,14,Park / garden,OSM land use (100% of patch),16.1,9.1,24.5,compact,18,28.561691,77.213824
+299.4,11,Park / garden,OSM land use (100% of patch),16.3,8.9,18.5,compact,19,28.55885,77.222549
+299.4,11,Park / garden,OSM land use (100% of patch),16.3,8.9,18.5,compact,20,28.561933,77.226466
+299.4,11,Residential open space,OSM land use (100% of patch),16.3,8.9,18.5,compact,21,28.563516,77.218216
+298.4,11,Park / garden,OSM land use (100% of patch),10.5,7.1,27.7,compact,22,28.563725,77.223278
+274.8,10,Unclassified open land,no matching OSM context,9.5,6.7,33.4,linear strip,23,28.563641,77.223504
+223.6,8,Institutional land,OSM land use (100% of patch),10.2,6.7,18.5,compact,24,28.556614,77.228118
+222.0,8,Unclassified open land,no matching OSM context,8.6,6.3,30.5,linear strip,25,28.563626,77.224017
+148.7,5,Park / garden,OSM land use (100% of patch),9.2,6.1,16.3,compact,26,28.557975,77.227966
+148.7,5,Institutional land,OSM land use (100% of patch),9.2,6.1,16.3,compact,27,28.566308,77.213799
+148.7,5,Residential open space,OSM land use (100% of patch),9.2,6.1,16.3,compact,28,28.562808,77.224466
+148.7,5,Institutional land,OSM land use (100% of patch),8.2,5.9,18.5,compact,29,28.564766,77.215591
+127.8,5,Residential open space,OSM land use (100% of patch),7.8,4.8,21.6,compact,30,28.557986,77.223377
+101.4,4,Residential open space,OSM land use (100% of patch),7.5,4.5,17.3,compact,31,28.56008,77.222682
+97.8,3,Unclassified open land,no matching OSM context,7.6,4.6,16.3,compact,32,28.563122,77.22375
+82.5,3,Institutional land,OSM land use (100% of patch),4.3,3.4,21.1,linear strip,33,28.56527,77.214945
+77.2,3,Residential open space,OSM land use (100% of patch),8.5,4.7,9.2,compact,34,28.560308,77.222755
+73.4,2,Residential open space,OSM land use (100% of patch),8.2,4.6,9.2,compact,35,28.562058,77.224007
+73.4,2,Institutional land,OSM land use (100% of patch),8.2,4.6,9.2,compact,36,28.565141,77.213924
+73.4,2,Park / garden,OSM land use (100% of patch),8.2,4.6,9.2,compact,37,28.558225,77.212757
+73.4,2,Sports / recreation ground,OSM land use (100% of patch),8.2,4.6,9.2,compact,38,28.553391,77.219007
+73.4,2,Residential open space,OSM land use (100% of patch),8.2,4.6,9.2,compact,39,28.556641,77.221507
+73.4,2,Sports / recreation ground,OSM land use (100% of patch),8.2,4.6,9.2,compact,40,28.553225,77.222257
+73.4,2,Residential open space,OSM land use (100% of patch),8.2,4.6,9.2,compact,41,28.561975,77.223424
+73.4,2,Residential open space,OSM land use (100% of patch),8.2,4.6,9.2,compact,42,28.562141,77.223674
+73.4,2,Sports / recreation ground,OSM land use (100% of patch),8.2,4.6,9.2,compact,43,28.552558,77.219424
+73.4,2,Institutional land,OSM land use (100% of patch),8.2,4.6,9.2,compact,44,28.564225,77.214757
+72.9,2,Institutional land,OSM land use (100% of patch),5.2,3.5,16.3,irregular,45,28.564371,77.214386
+72.6,2,Unclassified open land,no matching OSM context,3.8,3.1,20.5,linear strip,46,28.563601,77.223623
+71.2,2,Residential open space,OSM land use (100% of patch),7.9,4.5,9.2,compact,47,28.557723,77.22284
+68.4,2,Residential open space,OSM land use (100% of patch),7.7,4.4,9.2,compact,48,28.560473,77.222505
+65.9,2,Residential open space,OSM land use (100% of patch),7.4,4.3,9.2,compact,49,28.56081,77.222761
+61.7,2,Institutional land,OSM land use (100% of patch),7.4,4.1,9.2,compact,50,28.564303,77.21467
+56.3,2,Residential open space,OSM land use (100% of patch),6.3,3.7,9.1,compact,51,28.557984,77.223003
+54.3,2,Institutional land,OSM land use (100% of patch),6.5,3.9,8.4,compact,52,28.564549,77.21467
+53.8,2,Institutional land,OSM land use (100% of patch),6.6,3.8,8.3,compact,53,28.565048,77.21567
+53.0,2,Residential open space,OSM land use (100% of patch),5.7,3.5,10.2,compact,54,28.557896,77.222913
+38.3,1,Institutional land,OSM land use (100% of patch),4.9,3.2,9.4,compact,55,28.564734,77.215161
+38.2,1,Unclassified open land,no matching OSM context,4.3,3.1,10.1,compact,56,28.562806,77.223185
+37.6,1,Institutional land,OSM land use (100% of patch),5.5,3.3,6.8,compact,57,28.565323,77.215101
+26.4,1,Institutional land,OSM land use (100% of patch),4.3,2.7,6.4,compact,58,28.565208,77.215025
+17799.5,711,Unclassified open land,no matching OSM context,90.6,44.7,261.8,compact,1,28.694523,77.153008
+8916.6,356,Institutional land,OSM land use (99% of patch),84.4,41.7,119.5,compact,2,28.697224,77.152197
+7742.8,309,Unclassified open land,no matching OSM context,56.1,35.6,138.5,compact,3,28.697229,77.154334
+6102.7,244,Unclassified open land,no matching OSM context,52.7,22.9,123.3,compact,4,28.696301,77.154597
+6079.1,243,Park / garden,OSM land use (100% of patch),41.4,18.6,174.4,compact,5,28.695751,77.165949
+4355.0,174,Park / garden,OSM land use (100% of patch),40.5,21.7,101.9,compact,6,28.695189,77.164166
+2330.7,93,Unclassified open land,no matching OSM context,36.9,21.8,57.0,compact,7,28.69615,77.151765
+2214.5,88,Unclassified open land,no matching OSM context,26.2,14.6,89.3,compact,8,28.697747,77.156993
+1725.5,69,Unclassified open land,no matching OSM context,31.9,17.1,55.4,compact,9,28.702051,77.153838
+1645.8,65,Unclassified open land,no matching OSM context,35.0,18.0,48.9,compact,10,28.695667,77.151274
+1645.1,65,Residential open space,OSM land use (100% of patch),32.8,16.9,57.5,compact,11,28.701235,77.159675
+1458.1,58,Unclassified open land,no matching OSM context,12.7,8.0,144.2,linear strip,12,28.69706,77.157864
+1363.9,54,Commercial / industrial grounds,OSM land use (100% of patch),16.1,9.0,84.9,irregular,13,28.694753,77.15715
+1218.4,48,Unclassified open land,no matching OSM context,16.3,9.1,103.0,irregular,14,28.695422,77.158803
+1203.1,48,Commercial / industrial grounds,OSM land use (98% of patch),23.9,13.3,63.2,compact,15,28.693957,77.156313
+1049.4,41,Commercial / industrial grounds,OSM land use (100% of patch),20.4,12.4,46.2,compact,16,28.69589,77.15939
+1019.5,40,Commercial / industrial grounds,OSM land use (71% of patch),17.0,11.7,72.7,irregular,17,28.693595,77.154065
+899.3,35,Institutional land,OSM land use (100% of patch),26.1,13.6,40.7,compact,18,28.705992,77.159838
+823.7,32,Unclassified open land,no matching OSM context,16.2,10.0,62.3,irregular,19,28.696402,77.164574
+748.9,29,Unclassified open land,no matching OSM context,20.1,11.1,36.9,compact,20,28.701461,77.15424
+649.2,25,Institutional land,OSM land use (100% of patch),20.1,11.4,32.6,compact,21,28.697158,77.15333
+524.2,20,Unclassified open land,no matching OSM context,18.2,10.6,32.6,compact,22,28.694533,77.151098
+522.7,20,Unclassified open land,no matching OSM context,16.3,8.9,36.9,compact,23,28.700771,77.154145
+443.3,17,Commercial / industrial grounds,OSM land use (100% of patch),10.4,7.4,43.2,irregular,24,28.694649,77.156824
+308.0,12,Commercial / industrial grounds,OSM land use (100% of patch),10.8,7.2,28.9,compact,25,28.694139,77.1561
+299.0,11,Unclassified open land,no matching OSM context,9.2,7.4,32.6,linear strip,26,28.695985,77.163282
+299.0,11,Unclassified open land,no matching OSM context,9.2,7.4,32.6,linear strip,27,28.696069,77.163616
+299.0,11,Unclassified open land,no matching OSM context,9.2,7.4,32.6,linear strip,28,28.695902,77.162949
+298.5,11,Unclassified open land,no matching OSM context,9.8,7.0,27.7,compact,29,28.695881,77.159095
+298.0,11,Unclassified open land,no matching OSM context,9.9,7.3,24.4,compact,30,28.69711,77.158407
+289.1,11,Unclassified open land,no matching OSM context,9.7,6.4,35.1,linear strip,31,28.694598,77.15161
+223.8,8,Unclassified open land,no matching OSM context,9.2,6.9,24.4,irregular,32,28.695652,77.162157
+223.8,8,Unclassified open land,no matching OSM context,8.1,6.5,27.7,linear strip,33,28.696319,77.152241
+223.3,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,34,28.696541,77.165102
+223.3,8,Unclassified open land,no matching OSM context,10.1,6.7,18.5,compact,35,28.696263,77.164185
+206.8,8,Commercial / industrial grounds,OSM land use (100% of patch),9.2,6.6,24.4,irregular,36,28.693155,77.155067
+205.8,8,Unclassified open land,no matching OSM context,8.1,6.2,27.7,linear strip,37,28.693244,77.159826
+165.3,6,Commercial / industrial grounds,OSM land use (100% of patch),7.3,5.4,26.8,linear strip,38,28.695061,77.156754
+148.5,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,39,28.697235,77.167282
+148.5,5,Commercial / industrial grounds,OSM land use (100% of patch),9.2,6.1,16.3,compact,40,28.692652,77.155032
+148.5,5,Unclassified open land,no matching OSM context,8.1,5.9,18.5,compact,41,28.69911,77.157407
+148.5,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,42,28.696152,77.163866
+148.5,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,43,28.696985,77.166449
+148.5,5,Unclassified open land,no matching OSM context,8.1,5.9,18.5,compact,44,28.693444,77.159741
+148.5,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,45,28.695569,77.161949
+148.5,5,Unclassified open land,no matching OSM context,8.1,5.9,18.5,compact,46,28.69361,77.159657
+143.2,5,Commercial / industrial grounds,OSM land use (100% of patch),10.5,6.0,14.6,compact,47,28.693904,77.155314
+129.6,5,Unclassified open land,no matching OSM context,8.9,5.6,16.9,compact,48,28.699565,77.157708
+118.0,4,Unclassified open land,no matching OSM context,7.7,5.0,18.5,compact,49,28.693873,77.159497
+113.6,4,Unclassified open land,no matching OSM context,7.7,4.9,18.5,compact,50,28.694041,77.159414
+106.9,4,Commercial / industrial grounds,OSM land use (100% of patch),8.1,5.2,14.3,compact,51,28.695587,77.154823
+88.3,3,Commercial / industrial grounds,OSM land use (100% of patch),6.6,4.3,17.4,irregular,52,28.693993,77.155461
+78.8,3,Residential open space,OSM land use (100% of patch),6.1,4.1,16.1,irregular,53,28.701305,77.159989
+74.4,2,Unclassified open land,no matching OSM context,4.2,3.5,19.0,linear strip,54,28.695253,77.1527
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,55,28.696819,77.165824
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,56,28.696902,77.166157
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,57,28.697735,77.168991
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,58,28.695819,77.162741
+73.3,2,Commercial / industrial grounds,OSM land use (118% of patch),8.1,4.6,9.2,compact,59,28.701652,77.165074
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,60,28.694985,77.159991
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,61,28.695319,77.161157
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,62,28.698902,77.157241
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,63,28.694902,77.159074
+73.3,2,Unclassified open land,no matching OSM context,8.1,4.6,9.2,compact,64,28.698235,77.157157
+73.3,2,Commercial / industrial grounds,OSM land use (100% of patch),8.1,4.6,9.2,compact,65,28.692735,77.155157
+73.3,2,Commercial / industrial grounds,OSM land use (100% of patch),8.1,4.6,9.2,compact,66,28.692402,77.154657
+73.3,2,Commercial / industrial grounds,OSM land use (100% of patch),8.1,4.6,9.2,compact,67,28.694069,77.155907
+71.9,2,Unclassified open land,no matching OSM context,7.5,4.4,10.4,compact,68,28.694902,77.152244
+70.7,2,Unclassified open land,no matching OSM context,8.1,4.5,9.2,compact,69,28.697151,77.157156
+70.3,2,Commercial / industrial grounds,OSM land use (100% of patch),8.1,4.5,9.2,compact,70,28.695151,77.156156
+63.9,2,Unclassified open land,no matching OSM context,6.0,3.8,12.8,compact,71,28.701835,77.165004
+63.1,2,Unclassified open land,no matching OSM context,7.1,4.2,9.2,compact,72,28.692824,77.15374
+62.9,2,Unclassified open land,no matching OSM context,7.4,4.2,9.2,compact,73,28.699398,77.157495
+59.6,2,Unclassified open land,no matching OSM context,6.7,3.9,9.8,compact,74,28.69948,77.15758
+56.2,2,Unclassified open land,no matching OSM context,6.3,3.9,9.2,compact,75,28.695906,77.158499
+52.0,2,Unclassified open land,no matching OSM context,6.0,3.7,9.2,compact,76,28.692065,77.15998
+50.0,2,Unclassified open land,no matching OSM context,4.3,3.2,13.6,linear strip,77,28.700336,77.158512
+49.7,1,Unclassified open land,no matching OSM context,5.8,3.6,9.2,compact,78,28.691898,77.160062
+48.3,1,Unclassified open land,no matching OSM context,4.4,3.1,13.7,linear strip,79,28.69497,77.15212
+40.2,1,Commercial / industrial grounds,OSM land use (59% of patch),5.2,3.2,9.3,compact,80,28.693907,77.154307
+38.3,1,Unclassified open land,no matching OSM context,3.2,2.6,13.0,linear strip,81,28.695054,77.152307
+37.9,1,Commercial / industrial grounds,OSM land use (100% of patch),5.1,3.2,8.1,compact,82,28.694921,77.157078
+37.2,1,Unclassified open land,no matching OSM context,5.1,3.1,8.1,compact,83,28.695338,77.157078
+36.9,1,Commercial / industrial grounds,OSM land use (100% of patch),4.8,3.1,8.5,compact,84,28.693911,77.156057
+36.1,1,Unclassified open land,no matching OSM context,4.3,3.0,9.2,compact,85,28.691822,77.153804
+35.7,1,Commercial / industrial grounds,OSM land use (100% of patch),3.4,2.7,11.3,linear strip,86,28.693004,77.15492
+35.5,1,Commercial / industrial grounds,OSM land use (100% of patch),5.1,3.1,7.1,compact,87,28.694001,77.155228
+32.8,1,Unclassified open land,no matching OSM context,4.7,2.9,7.8,compact,88,28.694965,77.152331
+32.4,1,Unclassified open land,no matching OSM context,4.7,2.9,7.6,compact,89,28.695882,77.151915
+32.0,1,Unclassified open land,no matching OSM context,4.6,2.9,7.8,compact,90,28.69633,77.158259
+31.8,1,Commercial / industrial grounds,OSM land use (100% of patch),4.5,2.9,8.0,compact,91,28.695174,77.15683
+29.3,1,Unclassified open land,no matching OSM context,4.6,2.8,7.2,compact,92,28.695131,77.152667
+27.3,1,Unclassified open land,no matching OSM context,4.3,2.7,7.3,compact,93,28.702008,77.165482
+16423.9,656,Unclassified open land,no matching OSM context,61.8,30.3,220.5,compact,1,28.421498,77.067724
+14001.0,560,Unclassified open land,no matching OSM context,57.8,20.1,348.5,irregular,2,28.423148,77.071351
+6701.6,268,Unclassified open land,no matching OSM context,46.9,21.7,110.8,compact,3,28.432367,77.069529
+5496.9,219,Unclassified open land,no matching OSM context,46.4,24.9,113.3,compact,4,28.423391,77.066524
+5189.1,207,Unclassified open land,no matching OSM context,51.1,22.5,103.6,compact,5,28.435647,77.069893
+5120.9,204,Unclassified open land,no matching OSM context,49.1,23.8,141.9,compact,6,28.430209,77.064495
+4215.1,168,Unclassified open land,no matching OSM context,42.8,22.8,89.8,compact,7,28.428128,77.074268
+3990.4,159,Unclassified open land,no matching OSM context,59.6,26.2,83.1,compact,8,28.424173,77.065434
+3949.2,157,Unclassified open land,no matching OSM context,26.2,15.9,119.1,compact,9,28.434419,77.071562
+3536.3,141,Unclassified open land,no matching OSM context,25.5,15.6,133.2,compact,10,28.428528,77.067082
+3313.5,132,Unclassified open land,no matching OSM context,40.8,22.7,92.4,compact,11,28.426563,77.067894
+2710.5,108,Unclassified open land,no matching OSM context,25.7,14.8,116.8,irregular,12,28.432034,77.063424
+2181.2,87,Unclassified open land,no matching OSM context,29.9,17.4,78.7,compact,13,28.430286,77.061514
+2031.5,81,Unclassified open land,no matching OSM context,27.9,15.8,83.1,compact,14,28.424432,77.067334
+1955.5,78,Unclassified open land,no matching OSM context,30.6,15.5,70.1,compact,15,28.428942,77.074296
+1954.0,78,Unclassified open land,no matching OSM context,26.6,13.7,59.8,compact,16,28.42766,77.067193
+1804.6,72,Unclassified open land,no matching OSM context,35.5,16.4,55.4,compact,17,28.433804,77.072165
+1802.8,72,Unclassified open land,no matching OSM context,20.2,12.6,96.6,irregular,18,28.421199,77.066036
+1501.6,60,Unclassified open land,no matching OSM context,16.4,11.1,96.5,irregular,19,28.421799,77.069495
+1353.6,54,Unclassified open land,no matching OSM context,29.9,16.2,49.0,compact,20,28.430451,77.063917
+1200.9,48,Unclassified open land,no matching OSM context,20.3,10.9,74.2,irregular,21,28.426994,77.071173
+1078.9,43,Unclassified open land,no matching OSM context,23.6,12.0,55.4,compact,22,28.428798,77.075111
+1026.5,41,Unclassified open land,no matching OSM context,24.7,13.9,48.4,compact,23,28.428253,77.075069
+977.1,39,Unclassified open land,no matching OSM context,18.5,11.7,58.9,compact,24,28.423631,77.06526
+977.0,39,Unclassified open land,no matching OSM context,16.3,11.5,46.2,compact,25,28.424163,77.06176
+975.5,39,Unclassified open land,no matching OSM context,16.3,8.9,57.2,compact,26,28.431458,77.068895
+827.2,33,Unclassified open land,no matching OSM context,16.3,11.8,55.4,irregular,27,28.427538,77.06812
+826.2,33,Unclassified open land,no matching OSM context,20.2,12.3,36.9,compact,28,28.428387,77.060203
+825.7,33,Unclassified open land,no matching OSM context,18.4,10.0,59.1,compact,29,28.428629,77.061256
+752.2,30,Unclassified open land,no matching OSM context,16.3,12.3,46.2,irregular,30,28.430349,77.072783
+751.2,30,Unclassified open land,no matching OSM context,18.4,11.3,40.8,compact,31,28.430291,77.065408
+750.7,30,Unclassified open land,no matching OSM context,16.4,11.0,46.2,compact,32,28.432366,77.070241
+676.3,27,Unclassified open land,no matching OSM context,18.4,11.7,40.8,compact,33,28.430386,77.065889
+674.9,26,Unclassified open land,no matching OSM context,16.2,10.1,48.1,compact,34,28.427275,77.067
+525.0,21,Unclassified open land,no matching OSM context,17.3,10.4,27.7,compact,35,28.428099,77.061384
+450.1,18,Unclassified open land,no matching OSM context,10.1,7.8,40.8,compact,36,28.424946,77.072047
+450.1,18,Unclassified open land,no matching OSM context,16.1,9.1,32.7,compact,37,28.431488,77.062727
+449.6,17,Unclassified open land,no matching OSM context,16.3,9.1,32.7,compact,38,28.429974,77.058949
+449.6,17,Unclassified open land,no matching OSM context,16.3,8.9,27.7,compact,39,28.422168,77.066074
+449.6,17,Unclassified open land,no matching OSM context,16.2,9.1,32.7,compact,40,28.424071,77.071366
+449.1,17,Unclassified open land,no matching OSM context,10.0,7.7,41.0,compact,41,28.435029,77.069797
+449.1,17,Unclassified open land,no matching OSM context,10.5,7.7,31.0,compact,42,28.420779,77.066186
+449.1,17,Unclassified open land,no matching OSM context,10.6,7.7,32.7,compact,43,28.425682,77.058977
+420.6,16,Unclassified open land,no matching OSM context,14.3,8.1,32.1,compact,44,28.429776,77.075012
+420.5,16,Unclassified open land,no matching OSM context,16.7,9.3,30.0,compact,45,28.434419,77.072198
+374.7,14,Unclassified open land,no matching OSM context,16.1,9.1,24.5,compact,46,28.421399,77.065474
+374.6,14,Unclassified open land,no matching OSM context,16.3,8.8,27.7,compact,47,28.430782,77.061608
+374.2,14,Unclassified open land,no matching OSM context,10.0,7.6,32.7,compact,48,28.424965,77.067791
+373.7,14,Unclassified open land,no matching OSM context,10.3,7.5,31.0,compact,49,28.424332,77.063075
+369.3,14,Unclassified open land,no matching OSM context,16.1,9.0,24.5,compact,50,28.435231,77.059093
+299.2,11,Unclassified open land,no matching OSM context,9.8,7.1,27.7,compact,51,28.430536,77.065137
+298.7,11,Unclassified open land,no matching OSM context,10.8,7.3,24.5,compact,52,28.431453,77.070741
+298.7,11,Unclassified open land,no matching OSM context,10.8,7.3,24.5,compact,53,28.430328,77.063408
+298.7,11,Unclassified open land,no matching OSM context,10.5,7.1,27.7,compact,54,28.430015,77.05922
+298.7,11,Unclassified open land,no matching OSM context,10.5,7.1,27.7,compact,55,28.429849,77.074178
+298.7,11,Unclassified open land,no matching OSM context,10.8,7.3,24.5,compact,56,28.435745,77.068908
+298.7,11,Unclassified open land,no matching OSM context,10.1,7.3,24.5,compact,57,28.435307,77.066408
+226.3,9,Unclassified open land,no matching OSM context,7.5,5.4,36.9,linear strip,58,28.429285,77.075149
+224.3,8,Unclassified open land,no matching OSM context,9.2,6.9,24.5,irregular,59,28.428432,77.074908
+224.3,8,Unclassified open land,no matching OSM context,9.2,6.9,24.5,irregular,60,28.434432,77.070491
+223.8,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,61,28.431321,77.065019
+223.8,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,62,28.423238,77.065352
+223.8,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,63,28.424321,77.068185
+223.8,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,64,28.43071,77.06188
+223.8,8,Unclassified open land,no matching OSM context,10.2,6.7,18.5,compact,65,28.430821,77.062185
+148.9,5,Unclassified open land,no matching OSM context,8.2,5.9,18.5,compact,66,28.419557,77.066324
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,67,28.434099,77.062783
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,68,28.429182,77.073949
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,69,28.428765,77.060449
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,70,28.427099,77.058866
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,71,28.421682,77.066533
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,72,28.434099,77.066116
+148.9,5,Unclassified open land,no matching OSM context,8.2,5.9,18.5,compact,73,28.423057,77.067074
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,74,28.431599,77.069283
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,75,28.421099,77.067116
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,76,28.435182,77.070783
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,77,28.428015,77.073033
+148.9,5,Unclassified open land,no matching OSM context,8.2,5.9,18.5,compact,78,28.424724,77.070241
+148.9,5,Unclassified open land,no matching OSM context,8.2,5.9,18.5,compact,79,28.433807,77.065908
+148.9,5,Unclassified open land,no matching OSM context,8.2,5.9,18.5,compact,80,28.43064,77.065991
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,81,28.427432,77.066533
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,82,28.430932,77.065116
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,83,28.433099,77.064616
+148.9,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,84,28.424432,77.062033
+142.3,5,Unclassified open land,no matching OSM context,9.2,6.1,16.3,compact,85,28.421933,77.072446
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,86,28.428849,77.074824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,87,28.429765,77.074574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,88,28.431015,77.074491
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,89,28.429932,77.074741
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,90,28.429849,77.074658
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,91,28.435682,77.069158
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,92,28.434765,77.068991
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,93,28.425182,77.069824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,94,28.432849,77.069741
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,95,28.426182,77.071574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,96,28.422849,77.071574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,97,28.434265,77.072074
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,98,28.424682,77.072074
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,99,28.429099,77.073824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,100,28.428515,77.073824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,101,28.429515,77.073908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,102,28.427932,77.072908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,103,28.435099,77.070658
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,104,28.435265,77.070908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,105,28.421682,77.071408
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,106,28.426349,77.071324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,107,28.434599,77.070324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,108,28.425015,77.070158
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,109,28.425182,77.068908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,110,28.425265,77.069908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,111,28.422932,77.066991
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,112,28.428932,77.067324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,113,28.425349,77.067908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,114,28.424765,77.067908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,115,28.425765,77.067824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,116,28.436515,77.067991
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,117,28.419432,77.067658
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,118,28.427265,77.067491
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,119,28.435765,77.069241
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,120,28.436099,77.069574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,121,28.421599,77.066408
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,122,28.422849,77.066908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,123,28.421099,77.066324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,124,28.419182,77.066324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,125,28.419349,77.066824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,126,28.424015,77.066074
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,127,28.423765,77.064741
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,128,28.424932,77.064908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,129,28.430849,77.065574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,130,28.430765,77.065824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,131,28.420932,77.065574
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,132,28.431015,77.066074
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,133,28.430932,77.066158
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,134,28.431432,77.064324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,135,28.429515,77.063324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,136,28.424515,77.064324
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,137,28.424849,77.064074
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,138,28.431599,77.063908
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,139,28.428265,77.061491
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,140,28.429515,77.061824
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,141,28.428182,77.060158
+73.5,2,Unclassified open land,no matching OSM context,8.2,4.6,9.2,compact,142,28.434349,77.059158
