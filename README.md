@@ -105,8 +105,11 @@ $$\text{Sampled Waypoints } = \{W_1, W_2, \dots, W_k\}$$
 
 ### 2. Inverse-Distance Weighting (IDW)
 At each 200m waypoint $W_j(\text{lat}, \text{lng})$, the estimated $\widehat{\text{PM}}_{2.5}$ concentration is calculated from all active Delhi monitoring stations $S_i$ located at distance $d(W_j, S_i)$ kilometers:
-$$w_i = \frac{1}{d(W_j, S_i)^2 + \epsilon} \quad (\epsilon = 0.05\text{ km})$$
+
+$$w_i = \frac{1}{d(W_j, S_i)^2 + \epsilon} \quad (\epsilon = 0.05 \text{ km})$$
+
 $$\widehat{\text{PM}}_{2.5}(W_j) = \frac{\sum_{i=1}^{M} w_i \cdot \text{PM}_{2.5}(S_i)}{\sum_{i=1}^{M} w_i}$$
+
 
 ### 3. Route Exposure Score
 The overall exposure score is the length-weighted mean across all equidistant 200m samples:
