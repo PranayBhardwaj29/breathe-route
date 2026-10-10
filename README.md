@@ -255,6 +255,8 @@ When prompted:
 - **Stack Name**: `breathe-route`
 - **AWS Region**: `ap-south-1`
 - **Allow SAM CLI to create IAM roles**: `Y`
+
+
 - **BreatheRouteFunction Function URL may not have authorization defined**: `y` (public endpoint)
 
 Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` in `frontend/app.js`.
@@ -262,5 +264,6 @@ Copy the printed `BreatheRouteFunctionUrl` output and update `DEFAULT_API_URL` i
 ---
 
 ## 👥 Contributors & Acknowledgements
+vanshika
 - Developed for **Environmental Hacks by AWS × WeMakeDevs** (Air Track).
 - Environmental telemetry: **OpenAQ v3**, **Open-Meteo**, **Copernicus CAMS European Earth Observation**, and **OpenStreetMap Contributors**.
